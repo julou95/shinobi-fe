@@ -2,14 +2,16 @@ import styles from '@/styles/Artist.module.scss'
 import { getImageUrl } from '@/constants/helpers'
 import Icons from '@/components/icons'
 
-export default function Artist({ data }) {
+const isEven = (nmbr) => nmbr % 2 === 0
+
+export default function Artist({ data, index }) {
   return (
     <div className={styles.artist}>
       <div className={styles.profilePic} uk-parallax={`opacity: 0,1; y: 50,0; end: 85vh + 50%;`}>
-      <img src={getImageUrl(data.attributes.profilePic)} />
+        <img src={getImageUrl(data.attributes.profilePic)} />
       </div>
       <div className={styles.descWrapper}>
-        <div className={styles.descriptionLarge} uk-parallax={`opacity: 0,1; y: 50,0; end: 85vh + 50%;`}>
+        <div className={styles.descriptionLarge} uk-parallax={`opacity: 0,1; ${ isEven(index) ? '' : 'x: 100,100;' } y: 50,0; end: 85vh + 50%;`}>
           {
             data.attributes.guest && <h5>Gasttättowierer</h5>
           }
