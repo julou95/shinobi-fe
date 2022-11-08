@@ -1,0 +1,26 @@
+.impressumWrapper {
+  padding-top: 100px;
+  min-height: 100vh;
+  width: 100vw;
+  background-color: #111;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  padding: 10px;
+  background-color: black;
+  border-bottom: 5px solid #CE9C2F;
+
+  img {
+    width: 150px;
+  }
+}
+
+.impressumText {
+  padding: 10px;
+  margin-bottom: 50px;
+}

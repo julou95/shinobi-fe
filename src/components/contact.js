@@ -42,7 +42,14 @@ export default function Contact() {
       </h1>
       <div className={styles.contactWrapper}>
         <div className={styles.contactLeft}>
-          Hola
+          <h3><span>Adresse</span></h3>
+          <div>Shinobi-Tattoo</div>
+          <div>
+            Seftigenstrasse 83
+          </div>
+          <div>
+            3007 Bern
+          </div>
         </div>
         <div className={styles.verticalSplit}></div>
         <div className={styles.contactRight}>

@@ -2,9 +2,7 @@ import styles from '@/styles/Artist.module.scss'
 import { getImageUrl } from '@/constants/helpers'
 import Icons from '@/components/icons'
 
-const isEven = (nmbr) => nmbr % 2 == 0
-
-export default function Artist({ data, index }) {
+export default function Artist({ data }) {
   return (
     <div className={styles.artist}>
       <div className={styles.profilePic} uk-parallax={`opacity: 0,1; y: 50,0; end: 85vh + 50%;`}>
@@ -26,7 +24,9 @@ export default function Artist({ data, index }) {
                 data.attributes.guest && <h5>Gasttättowierer</h5>
               }
             </div>
-            <div className={styles.arrow}><Icons name="forth" size="40" /></div>
+            <div className={styles.arrow}>
+              {/* <Icons name="forth" size="40" /> */}
+            </div>
           </div>
           {data.attributes.description}
         </div>

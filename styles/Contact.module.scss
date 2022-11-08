@@ -6,7 +6,9 @@
 }
 
 .verticalSplit {
+  border-bottom: 2px solid #CE9C2F;
   border-right: 2px solid #CE9C2F;
+  margin: 20px;
 }
 
 .contactLeft, .contactRight {
@@ -16,6 +18,8 @@
 
 .contactLeft {
   display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .contactRight {
@@ -35,7 +39,9 @@
   }
   button {
     border-color: #CE9C2F;
-    color: #CE9C2F;
+    background-color: #CE9C2F;
+    color: white;
+    margin-bottom: 0;
   }
 }
 
@@ -51,8 +57,12 @@
 @media screen and (min-width: 1008px) {
   .contactWrapper {
     flex-direction: row;
+    margin-bottom: 20px;;
+  }
+  .verticalSplit {
+    margin: 0;
   }
   .contactLeft, .contactRight {
-    max-width: 50%;
+    width: 50%;
   }
 }
