@@ -41,7 +41,7 @@ export default function Contact() {
         <span>Kontakt</span>
       </h1>
       <div className={styles.contactWrapper}>
-        <div className={styles.contactLeft}>
+        <div className={styles.contactLeft} uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%;">
           <h3><span>Adresse</span></h3>
           <div>Shinobi-Tattoo</div>
           <div>
@@ -51,7 +51,7 @@ export default function Contact() {
             3007 Bern
           </div>
         </div>
-        <div className={styles.verticalSplit}></div>
+        <div className={styles.verticalSplit} uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%;"></div>
         <div className={styles.contactRight}>
             <input type="text" ref={nameRef} placeholder="Name" uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%;" />
             <input type="email" ref={emailRef} placeholder="Email Adresse" uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%;" />

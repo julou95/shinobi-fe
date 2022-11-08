@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Script from 'next/script'
+import Link from 'next/link'
 import { fetchContent } from '../src/api/strapi'
 import Header from '@/components/header'
 import Welcome from '@/components/home'
@@ -58,16 +59,11 @@ export default function Home({ home, articles, artists, gallery }) {
           </div>
         </main>
       </div>
-      <footer className={styles.footer}>
+      <footer className={styles.footer} uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%;">
         <iframe src="https://snazzymaps.com/embed/436830" width="100%" height="300px" style={{ border: 'none' }}></iframe>
-        <div className={styles.area}>
-          <div className={styles.content}>
-            Hola
-          </div>
-        </div>
         <div className={`${styles.area} ${styles.footerEnd}`}>
           <div className={styles.content}>
-            Shinobi Tattoo 2022 © <a href="/impressum">Impressum</a>
+            Shinobi Tattoo 2022 © <Link href="/impressum">Impressum</Link>
           </div>
         </div>
       </footer>
