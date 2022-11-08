@@ -1,0 +1,58 @@
+.contactWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.verticalSplit {
+  border-right: 2px solid #CE9C2F;
+}
+
+.contactLeft, .contactRight {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.contactLeft {
+  display: flex;
+}
+
+.contactRight {
+  display: flex;
+  flex-direction: column;
+
+  input, textarea, button {
+    appearance: none;
+    border: 1px solid white;
+    padding: 10px 10px;
+    font-size: 25px;
+    margin-bottom: 20px;
+  }
+  textarea {
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  }
+  button {
+    border-color: #CE9C2F;
+    color: #CE9C2F;
+  }
+}
+
+.success {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  border: 1px solid green;
+  color: green;
+  background-color: rgb(208, 255, 220);
+}
+
+@media screen and (min-width: 1008px) {
+  .contactWrapper {
+    flex-direction: row;
+  }
+  .contactLeft, .contactRight {
+    max-width: 50%;
+  }
+}

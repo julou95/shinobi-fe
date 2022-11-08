@@ -1,0 +1,177 @@
+.container {
+  padding: 0 2rem;
+  background-color: #111111;
+}
+
+.content {
+  width: 100%;
+  padding: 20px 10px;
+  margin: 0 auto;
+}
+
+.main {
+  min-height: 100vh;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title a {
+  color: #0070f3;
+  text-decoration: none;
+}
+
+.title a:hover,
+.title a:focus,
+.title a:active {
+  text-decoration: underline;
+}
+
+.title {
+  margin: 0;
+  line-height: 1.15;
+  font-size: 4rem;
+}
+
+.title {
+  text-align: center;
+}
+
+.top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  padding: 20px 20px 20px 40px;
+  background: url('/shinobi-bg.jpeg');
+  background-repeat: no-repeat;
+  background-position: center;
+  border-top: 5px solid #CE9C2F;
+  border-bottom: 5px solid #CE9C2F;
+}
+
+.scrolldownWrapper {
+  position: absolute;
+  bottom: 20px;
+  // margin: 0 auto;
+}
+
+.mouse {
+	width: 35px;
+	height: 60px;
+	border: 2px solid #c5c5c5;
+	border-radius: 60px;
+	position: relative;
+	&::before {
+		content: '';
+		width: 7px;
+		height: 7px;
+		position: absolute;
+		top: 10px;
+		left: 50%;
+		transform: translateX(-50%);
+		background-color: #c5c5c5;
+		border-radius: 50%;
+		opacity: 1;
+		animation: wheel 2s infinite;
+		-webkit-animation: wheel 2s infinite;
+	}
+}
+
+@keyframes wheel {
+	to {
+		opacity: 0;
+		top: 40px;
+	}
+}
+
+.logo img {
+  width: 100%;
+  max-width: 600px;
+  animation: fadeIn 1s;
+}
+
+.area {
+  width: 100vw;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  // height: 100px;
+  opacity: 0;
+  background-color: #111111;
+  color: #11111197;
+  transition: all 0.3s 0.2s;
+  background: linear-gradient(0, transparent 0 30%, rgba(0, 0, 0, 0.548) 34% 35%, #CE9C2F 35% 40%, black 40% 100%);
+  background-size: 120%;
+  background-repeat: no-repeat;
+  display: inline;
+}
+
+.headerVisible {
+  opacity: 1;
+  // background-color: black;
+  color: white;
+}
+
+.headerCenter {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  img {
+    width: 120px;
+  }
+}
+
+.homeWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.footer {
+  background-color: #111111;
+  border-top: 5px solid #CE9C2F;
+  min-height: 30vh;
+  iframe {
+    border-bottom: 5px solid #CE9C2F !important;
+  }
+}
+
+.footerEnd {
+  color: #7b7b7b;
+  background-color: #000000;
+}
+
+@media screen and (min-width: 640px) {
+  .content {
+    width: 640px;
+  }
+}
+
+@media screen and (min-width: 1008px) {
+  .content {
+    width: 1000px;
+    padding: 20px;
+  }
+  .headerCenter {
+    padding: 20px;
+    img {
+      width: 180px;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0;}
+  100% { opacity: 1;}
+}
