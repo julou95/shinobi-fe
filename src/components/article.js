@@ -1,13 +1,6 @@
-import { useRouter } from 'next/router'
 import styles from '@/styles/Article.module.css'
 
 export default function Article({ data }) {
-  // const router = useRouter()
-
-  // const goTo = () => {
-  //   router.push(`/news/${data.id}`)
-  // }
-
   return (
     <div className={styles.article}>
       <img className={styles.articleImage} src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${data.attributes.image.data.attributes.url}`} uk-parallax="opacity: 0,1; y: 50,0; end: 75vh + 50%" />

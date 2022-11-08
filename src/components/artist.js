@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router'
 import styles from '@/styles/Artist.module.scss'
 import { getImageUrl } from '@/constants/helpers'
 import Icons from '@/components/icons'
@@ -6,12 +5,6 @@ import Icons from '@/components/icons'
 const isEven = (nmbr) => nmbr % 2 == 0
 
 export default function Artist({ data, index }) {
-  // const router = useRouter()
-
-  // const goTo = () => {
-  //   router.push(`/artists/${data.id}`)
-  // }
-
   return (
     <div className={styles.artist}>
       <div className={styles.profilePic} uk-parallax={`opacity: 0,1; x: ${isEven(index) ? '-100,0' : '100,0'}; end: 75vh + 50%;`}>

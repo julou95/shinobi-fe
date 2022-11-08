@@ -16,7 +16,7 @@ export default function Gallery({ data }) {
       <h1 uk-parallax="opacity: 0,1; y: 50,0; end: 75vh + 50%"><span>Galerie</span></h1>
       <div uk-grid="masonry: true; parallax: 100;" className="uk-child-width-1-2@s uk-child-width-1-3@m">
         {images.map((image, index) => (
-          <div onClick={() => selectImg(index)}>
+          <div onClick={() => selectImg(index)} key={index}>
             <div className="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle" uk-parallax="opacity: 0,1; y: 50,0; end: 95vh + 50%">
               <img className={`${styles.image} ${activeImage === index ? styles.active : ''}`} src={getGalImgUrl(image)} />
             </div>
