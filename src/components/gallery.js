@@ -39,7 +39,7 @@ export default function Gallery({ data }) {
                     <Icons name="prev" size={35} />
                   </div>
               }
-              <img className={styles.bigImage} src={getImageUrl(images[activeImage])} />
+              <img className={styles.bigImage} src={getGalImgUrl(images[activeImage])} />
               {
                 activeImage < images.length-1 &&
                   <div className={styles.next} onClick={() => selectImg(activeImage + 1)}>
