@@ -20,7 +20,7 @@ export default function Gallery({ data }) {
         {sliced.map((image, index) => (
           <div onClick={() => selectImg(index)} key={index}>
             <div className="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle" uk-parallax="opacity: 0,1; y: 50,0; end: 95vh + 50%">
-              <img className={`${styles.image} ${activeImage === index ? styles.active : ''}`} src={getGalImgUrl(image)} />
+              <img className={`${styles.image} ${activeImage === index ? styles.active : ''}`} src={image?.attributes?.url || ''} />
             </div>
           </div>
         ))}
@@ -44,7 +44,7 @@ export default function Gallery({ data }) {
                     <Icons name="prev" size={35} />
                   </div>
               }
-              <img className={styles.bigImage} src={getGalImgUrl(sliced[activeImage])} />
+              <img className={styles.bigImage} src={sliced[activeImage]?.attributes?.url || ''} />
               {
                 activeImage < sliced.length-1 &&
                   <div className={styles.next} onClick={() => selectImg(activeImage + 1)}>
@@ -55,20 +55,6 @@ export default function Gallery({ data }) {
           </div>
         </div>
       }
-      {/* <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="min-height: 300; max-height: 600; animation: push">
-
-        <ul class="uk-slideshow-items">
-          {images.map(image => (
-            <li>
-              <img src={`http://localhost:1337${image.attributes.url}`} uk-cover />
-            </li>
-          ))}
-        </ul>
-
-        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
-        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
-
-      </div> */}
     </div>
   )
 }
