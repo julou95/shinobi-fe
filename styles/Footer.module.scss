@@ -9,12 +9,19 @@
 }
 
 .footerEnd {
+  text-align: center;
   color: #7b7b7b;
-  background-color: #000000;
+  background-color: #020202;
 }
 
 .content {
   width: 100%;
   padding: 20px 10px;
   margin: 0 auto;
+  span {
+    user-select: none;
+  }
+  svg {
+    fill: red;
+  }
 }

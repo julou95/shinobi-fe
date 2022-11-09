@@ -64,6 +64,22 @@
   background-color: rgb(208, 255, 220);
 }
 
+
+.socialLogo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.socialLogo svg {
+  margin-right: 20px;
+  fill: $primary;
+}
+
+.socialLogo:hover {
+  color: $primary;
+}
+
 @media screen and (min-width: 1008px) {
   .contactWrapper {
     flex-direction: row;

@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import Link from 'next/link'
 import styles from '@/styles/Contact.module.scss'
 import { sendEmail } from 'src/api/strapi'
 import Icons from './icons'
@@ -67,6 +68,15 @@ export default function Contact() {
       </h1>
       <div className={styles.contactWrapper}>
         <div className={styles.contactLeft} uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%;">
+          <h3><span>Social Media</span></h3>
+          <a href="https://www.instagram.com/shinobi_tattoo_bern" target="_blank" className={styles.socialLogo}>
+              <Icons name="instagram" size="24" viewBox="256" />
+              Shinobi Tattoo
+          </a>
+          <a href="https://www.facebook.com/shinobi.tattoo.bern" className={styles.socialLogo} target="_blank">
+              <Icons name="facebook" size="24" viewBox="24" />
+              Shinobi Tattoo
+          </a>
           <h3><span>Adresse</span></h3>
           <div>Shinobi-Tattoo</div>
           <div>
