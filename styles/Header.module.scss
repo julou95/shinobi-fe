@@ -1,0 +1,42 @@
+.header {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  // height: 100px;
+  opacity: 0;
+  background-color: $black;
+  color: #11111197;
+  transition: all 0.3s;
+  background: linear-gradient(0, transparent 0 30%, rgba(0, 0, 0, 0.548) 34% 35%, $primary 35% 40%, $black 40% 100%);
+  background-size: 120%;
+  background-repeat: no-repeat;
+  display: inline;
+}
+
+.headerVisible {
+  opacity: 1;
+  // background-color: black;
+  color: white;
+}
+
+.headerCenter {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  img {
+    width: 120px;
+  }
+}
+
+@media screen and (min-width: 1008px) {
+  .headerCenter {
+    padding: 20px;
+    img {
+      width: 180px;
+    }
+  }
+}

@@ -19,12 +19,37 @@ export default function Contact() {
       betreff: betreffRef.current.value,
       text: textRef.current.value,
     }
-    sendEmail(data).then((res) => {
-      if (res.status === 200) {
-        setShowSuccess(true)
-        reset()
-      }
-    })
+
+    const required = [
+      nameRef,
+      emailRef,
+      betreffRef,
+      textRef,
+    ]
+
+    if (required.every(val => !!val.current.value)) {
+      required.forEach(ref => {
+        ref.current.classList.remove(styles.error)
+      })
+      sendEmail(data).then((res) => {
+        if (res?.status === 200) {
+            setShowSuccess(true)
+            reset()
+        } else {
+          if (res.message.includes('email')) {
+            emailRef.current.classList.add(styles.error)
+          }
+        }
+      })
+    } else {
+      required.forEach(ref => {
+        if (!ref.current.value) {
+          ref.current.classList.add(styles.error)
+        } else {
+          ref.current.classList.remove(styles.error)
+        }
+      });
+    }
   }
 
   const reset = () => {
@@ -53,20 +78,35 @@ export default function Contact() {
         </div>
         <div className={styles.verticalSplit} uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%;"></div>
         <div className={styles.contactRight}>
-            <input type="text" ref={nameRef} placeholder="Name" uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%;" />
-            <input type="email" ref={emailRef} placeholder="Email Adresse" uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%;" />
-            <input type="text" ref={phoneRef} placeholder="Telefon" uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%;" />
-            <input type="text" ref={betreffRef} placeholder="Betreff" uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%;" />
-            <textarea ref={textRef} placeholder="Text" uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%;"></textarea>
+          <label uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%;">
+            Name *
+            <input type="text" ref={nameRef} placeholder="Name" />
+          </label>
+          <label uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%;">
+            Email *
+            <input type="email" ref={emailRef} placeholder="Email Adresse" />
+          </label>
+          <label uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%;">
+            Telefon (optional)
+            <input type="text" ref={phoneRef} placeholder="Telefon" />
+          </label>
+          <label uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%;">
+            Betreff *
+            <input type="text" ref={betreffRef} placeholder="Betreff" />
+          </label>
+          <label uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%;">
+            Nachricht *
+            <textarea ref={textRef} placeholder="Text"></textarea>
+          </label>
+          <button onClick={sendMail} uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%;">Senden</button>
             {
-              showSuccess ?
+              showSuccess &&
                 <div className={styles.success} uk-alert>
                   <div>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+                    Deine Anfrage wurde erfolgreich abgeschickt. Wir melden uns bei dir!
                   </div>
-                  <Icons name="close" clickAction={() => setShowSuccess(false)}/>
-                </div> :
-                <button onClick={sendMail} uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%;">Senden</button>
+                  <Icons name="close" size="35" clickAction={() => setShowSuccess(false)}/>
+                </div>
             }
         </div>
       </div>

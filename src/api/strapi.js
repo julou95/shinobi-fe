@@ -21,5 +21,11 @@ export const sendEmail = (data) => {
       'Authorization': `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
       'Content-Type': 'application/json',
     },
+  }).then(res => {
+    return res;
+  }).catch(error => {
+    if (error.response.status === 400) {
+      return error.response.data.error
+    }
   })
 }

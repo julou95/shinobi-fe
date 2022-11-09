@@ -1,0 +1,20 @@
+.footer {
+  background-color: $black;
+  border-top: 5px solid $primary;
+  min-height: 30vh;
+  iframe {
+    background-color: $black;
+    border-bottom: 5px solid $primary !important;
+  }
+}
+
+.footerEnd {
+  color: #7b7b7b;
+  background-color: #000000;
+}
+
+.content {
+  width: 100%;
+  padding: 20px 10px;
+  margin: 0 auto;
+}

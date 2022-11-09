@@ -1,6 +1,6 @@
 .contactWrapper {
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   justify-content: space-between;
   align-content: center;
 }
@@ -25,6 +25,12 @@
 .contactRight {
   display: flex;
   flex-direction: column;
+  padding: 20px 0;
+
+  label {
+    display: flex;
+    flex-direction: column;
+  }
 
   input, textarea, button {
     appearance: none;
@@ -32,6 +38,9 @@
     padding: 10px 10px;
     font-size: 25px;
     margin-bottom: 20px;
+    &.error {
+      border-color: rgb(200, 35, 35);
+    }
   }
   textarea {
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -48,6 +57,7 @@
 .success {
   display: flex;
   align-items: center;
+  margin-top: 20px;
   padding: 5px;
   border: 1px solid green;
   color: green;
@@ -64,5 +74,8 @@
   }
   .contactLeft, .contactRight {
     width: 50%;
+  }
+  .contactRight {
+    padding: 20px;
   }
 }

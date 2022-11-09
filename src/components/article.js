@@ -1,4 +1,4 @@
-import styles from '@/styles/Article.module.css'
+import styles from '@/styles/Article.module.scss'
 
 export default function Article({ data }) {
   return (

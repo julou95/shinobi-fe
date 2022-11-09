@@ -1,5 +1,5 @@
 .gallery {
-  margin-bottom: 150px;
+  margin-bottom: 50px;
 }
 
 .imageWrapper {
@@ -7,11 +7,24 @@
 }
 
 .image {
-  border: 5px solid white;
   transition: all 0.2s ease;
   cursor: pointer;
 }
 
+.showAll {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+  padding-top: 100px;
+  button {
+    appearance: none;
+    padding: 10px;
+    border: 2px solid $primary;
+    background-color: transparent;
+    color: $primary;
+    font-size: 25px;;
+  }
+}
 
 .hoverGalleryWrapper {
   z-index: 1;
@@ -131,5 +144,9 @@
   .active {
     border-color: #CE9C2F;
     z-index: 1;
+  }
+
+  .showAll {
+    padding-top: 150px;
   }
 }

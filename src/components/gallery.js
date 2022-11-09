@@ -4,8 +4,10 @@ import styles from '@/styles/Gallery.module.scss'
 import { getGalImgUrl } from '@/constants/helpers'
 
 export default function Gallery({ data }) {
+  const [showAll, setShowAll] = useState(false)
   const [activeImage, setActiveImage] = useState()
   const images = data?.[0]?.attributes?.image?.data || []
+  const sliced = images.slice(0, showAll ? images.length : 5)
 
   const selectImg = (id) => {
     setActiveImage(id)
@@ -15,7 +17,7 @@ export default function Gallery({ data }) {
     <div className={styles.gallery}>
       <h1 uk-parallax="opacity: 0,1; y: 50,0; end: 75vh + 50%"><span>Galerie</span></h1>
       <div uk-grid="masonry: true; parallax: 100;" className="uk-child-width-1-2@s uk-child-width-1-3@m">
-        {images.map((image, index) => (
+        {sliced.map((image, index) => (
           <div onClick={() => selectImg(index)} key={index}>
             <div className="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle" uk-parallax="opacity: 0,1; y: 50,0; end: 95vh + 50%">
               <img className={`${styles.image} ${activeImage === index ? styles.active : ''}`} src={getGalImgUrl(image)} />
@@ -23,7 +25,10 @@ export default function Gallery({ data }) {
           </div>
         ))}
       </div>
-      {images && activeImage >= 0 &&
+      <div className={styles.showAll}>
+        <button onClick={() => setShowAll(prev => !prev)}>{showAll ? 'Weniger' : 'Mehr'} anzeigen</button>
+      </div>
+      {sliced && activeImage >= 0 &&
         <div className={styles.hoverGalleryWrapper}>
           <div className={styles.closeWrapper}>
             <div className={styles.close} onClick={() => setActiveImage(-1)}>
@@ -39,9 +44,9 @@ export default function Gallery({ data }) {
                     <Icons name="prev" size={35} />
                   </div>
               }
-              <img className={styles.bigImage} src={getGalImgUrl(images[activeImage])} />
+              <img className={styles.bigImage} src={getGalImgUrl(sliced[activeImage])} />
               {
-                activeImage < images.length-1 &&
+                activeImage < sliced.length-1 &&
                   <div className={styles.next} onClick={() => selectImg(activeImage + 1)}>
                     <Icons name="next" size={35} />
                   </div>

@@ -6,9 +6,6 @@ export default function Impressum({ data }) {
 
   return (
     <div className={styles.impressumWrapper}>
-      <div className={styles.header}>
-        <img src="/shinobi-logo.png" onClick={() => router.push('/')} />
-      </div>
       <h1><span>Impressum</span></h1>
       <p className={styles.impressumText}>
         Kontakt-Adresse<br />
