@@ -67,6 +67,7 @@
 	border: 2px solid $primary;
 	border-radius: 60px;
 	position: relative;
+  cursor: pointer;
 	&::before {
 		content: '';
 		width: 7px;

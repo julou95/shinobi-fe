@@ -37,7 +37,7 @@ export const Header = ({ standalone = false }) => {
   return (
     <div ref={headRef} className={`${styles.header} ${standalone ? styles.headerVisible : ''}`}>
       <div className={styles.headerCenter}>
-        <img src="/shinobi-logo.png" onClick={scrollTop} />
+        <img src="https://shinobi-aws-s3-images-bucket.s3.eu-central-1.amazonaws.com/thumbnail_shinobi_logo_ce066ca1ac.png" onClick={scrollTop} />
       </div>
     </div>
   )

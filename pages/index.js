@@ -27,7 +27,7 @@ export default function Home({ home, articles, artists, gallery }) {
       <main className={styles.main}>
         <div uk-parallax="bgy: -100" className={styles.top}>
           <div className={styles.logo}>
-            <img src="/shinobi-logo.png" />
+            <img src="https://shinobi-aws-s3-images-bucket.s3.eu-central-1.amazonaws.com/medium_shinobi_logo_ce066ca1ac.png" />
           </div>
           <div className={styles.scrolldownWrapper}>
             <div className={styles.mouse} onClick={scrollDown}></div>

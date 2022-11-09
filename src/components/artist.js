@@ -3,8 +3,6 @@ import { remark } from 'remark'
 import html from 'remark-html'
 import matter from 'gray-matter'
 import styles from '@/styles/Artist.module.scss'
-import { getImageUrl } from '@/constants/helpers'
-import Icons from '@/components/icons'
 
 const isEven = (nmbr) => nmbr % 2 === 0
 
@@ -25,11 +23,11 @@ export default function Artist({ data, index }) {
       setDescription(res)
     })
   }, [])
-
+  
   return (
     <div className={styles.artist}>
       <div className={styles.profilePic} uk-parallax={`opacity: 0,1; y: 50,0; end: 85vh + 50%;`}>
-        <img src={data?.attributes?.profilePic?.data[0]?.attributes?.url || ''} />
+        <img src={data?.attributes?.profilePic?.data[0]?.attributes?.formats?.medium?.url || data?.attributes?.profilePic?.data[0]?.attributes?.url || ''} />
       </div>
       <div className={styles.descWrapper}>
         <div className={styles.descriptionLarge} uk-parallax={`opacity: 0,1; ${ isEven(index) ? '' : 'x: 100,100;' } y: 50,0; end: 85vh + 50%;`}>
