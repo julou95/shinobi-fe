@@ -64,7 +64,7 @@ export default function Home({ home, articles, artists, gallery }) {
   )
 }
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const home = await fetchContent('homepage')
   const articles = await fetchContent('articles')
   const artists = await fetchContent('artists')
