@@ -1,8 +1,6 @@
 import styles from '@/styles/Article.module.scss'
 
 export default function Article({ data }) {
-  console.log('LJ - data', data.attributes.image.data.attributes.formats);
-  
   return (
     <div className={styles.article}>
       <img

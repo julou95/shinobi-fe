@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import Icons from '@/components/icons'
 import styles from '@/styles/Gallery.module.scss'
-import { getGalImgUrl } from '@/constants/helpers'
 
 export default function Gallery({ data }) {
   const [showAll, setShowAll] = useState(false)
@@ -16,7 +15,7 @@ export default function Gallery({ data }) {
   return (
     <div className={styles.gallery}>
       <h1 uk-parallax="opacity: 0,1; y: 50,0; end: 75vh + 50%"><span>Galerie</span></h1>
-      <div uk-grid="masonry: true; parallax: 100;" className="uk-child-width-1-2@s uk-child-width-1-3@m">
+      <div uk-grid="masonry: true;" className="uk-child-width-1-2@s uk-child-width-1-3@m">
         {sliced.map((image, index) => (
           <div onClick={() => selectImg(index)} key={index}>
             <div className={`uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle ${styles.imgWrapper}`} uk-parallax="opacity: 0,1; y: 50,0; end: 95vh + 50%">
