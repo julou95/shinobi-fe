@@ -22,7 +22,6 @@ export default function Artist({ data, index }) {
   useEffect(() => {
     const fetchDesc = async () => await markdownDesc(data.attributes.description)
     fetchDesc().then(res => {
-      console.log('LJ - desc', res);
       setDescription(res)
     })
   }, [])

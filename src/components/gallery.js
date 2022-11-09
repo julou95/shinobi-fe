@@ -19,7 +19,7 @@ export default function Gallery({ data }) {
       <div uk-grid="masonry: true; parallax: 100;" className="uk-child-width-1-2@s uk-child-width-1-3@m">
         {sliced.map((image, index) => (
           <div onClick={() => selectImg(index)} key={index}>
-            <div className="uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle" uk-parallax="opacity: 0,1; y: 50,0; end: 95vh + 50%">
+            <div className={`uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle ${styles.imgWrapper}`} uk-parallax="opacity: 0,1; y: 50,0; end: 95vh + 50%">
               <img className={`${styles.image} ${activeImage === index ? styles.active : ''}`} src={image?.attributes?.url || ''} />
             </div>
           </div>
@@ -37,21 +37,19 @@ export default function Gallery({ data }) {
             </div> 
           </div>
           <div className={styles.hoverImageWrapper}>
-            <div className={styles.imageWrapper}>
-              {
-                activeImage > 0 &&
-                  <div className={styles.prev} onClick={() => selectImg(activeImage - 1)}>
-                    <Icons name="prev" size={35} />
-                  </div>
-              }
-              <img className={styles.bigImage} src={sliced[activeImage]?.attributes?.url || ''} />
-              {
-                activeImage < sliced.length-1 &&
-                  <div className={styles.next} onClick={() => selectImg(activeImage + 1)}>
-                    <Icons name="next" size={35} />
-                  </div>
-              }
-            </div>
+            {
+              activeImage > 0 &&
+                <div className={styles.prev} onClick={() => selectImg(activeImage - 1)}>
+                  <Icons name="prev" size={35} />
+                </div>
+            }
+            <img className={styles.bigImage} src={sliced[activeImage]?.attributes?.url || ''} />
+            {
+              activeImage < sliced.length-1 &&
+                <div className={styles.next} onClick={() => selectImg(activeImage + 1)}>
+                  <Icons name="next" size={35} />
+                </div>
+            }
           </div>
         </div>
       }

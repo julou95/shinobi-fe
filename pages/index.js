@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import Script from 'next/script'
-import Link from 'next/link'
 import { fetchContent } from '../src/api/strapi'
 import Header from '@/components/header'
 import Welcome from '@/components/home'
@@ -12,8 +11,6 @@ import styles from '@/styles/Home.module.scss'
 
 export default function Home({ home, articles, artists, gallery }) {
   const scrollDown = () => {
-    console.log('LJ - window.innerHeight', window.innerHeight);
-    
     window.scrollTo({top: window.innerHeight, behavior: 'smooth'});
   }
 

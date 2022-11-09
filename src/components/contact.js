@@ -1,5 +1,4 @@
 import { useRef, useState } from 'react'
-import Link from 'next/link'
 import styles from '@/styles/Contact.module.scss'
 import { sendEmail } from 'src/api/strapi'
 import Icons from './icons'
@@ -87,28 +86,28 @@ export default function Contact() {
           </div>
         </div>
         <div className={styles.verticalSplit} uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%;"></div>
-        <div className={styles.contactRight}>
-          <label uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%;">
+        <div className={styles.contactRight} uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%;">
+          <label>
             Name *
             <input type="text" ref={nameRef} placeholder="Name" />
           </label>
-          <label uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%;">
+          <label>
             Email *
             <input type="email" ref={emailRef} placeholder="Email Adresse" />
           </label>
-          <label uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%;">
+          <label>
             Telefon (optional)
-            <input type="text" ref={phoneRef} placeholder="Telefon" />
+            <input type="tel" ref={phoneRef} placeholder="Telefon" />
           </label>
-          <label uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%;">
+          <label>
             Betreff *
             <input type="text" ref={betreffRef} placeholder="Betreff" />
           </label>
-          <label uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%;">
+          <label>
             Nachricht *
             <textarea ref={textRef} placeholder="Text"></textarea>
           </label>
-          <button onClick={sendMail} uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%;">Senden</button>
+          <button onClick={sendMail}>Senden</button>
             {
               showSuccess &&
                 <div className={styles.success} uk-alert>
