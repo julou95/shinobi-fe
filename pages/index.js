@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import Head from 'next/head'
 import Script from 'next/script'
 import { fetchContent } from '../src/api/strapi'
+import Header from '@/components/header'
 import styles from '@/styles/Home.module.scss'
 
 export default function Home({ home, articles, artists, gallery }) {
@@ -23,7 +24,7 @@ export default function Home({ home, articles, artists, gallery }) {
   })
 
   const scrollDown = () => {
-    window.scrollTo({top: window.innerHeight, behavior: 'smooth'});
+    window.scrollTo({top: window.innerHeight+1, behavior: 'smooth'});
   }
 
   return (
@@ -44,6 +45,7 @@ export default function Home({ home, articles, artists, gallery }) {
             <div className={styles.mouse} onClick={scrollDown}></div>
           </div>
         </div>
+        <Header />
         <div className={styles.area}>
           <div className={styles.content}>
             <Suspense fallback={<div>...</div>}>

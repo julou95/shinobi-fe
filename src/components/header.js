@@ -5,28 +5,6 @@ export const Header = ({ standalone = false }) => {
   const router = useRouter()
   const headRef = useRef()
 
-  useEffect(() => {
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll, { passive: true })
-  }, [])
-
-  useEffect(() => {
-    if (standalone) {
-      headRef.current.classList.add(styles.headerVisible)
-    } else {
-      headRef.current.classList.remove(styles.headerVisible)
-    }
-  }, [standalone])
-
-  const onScroll = useCallback(event => {
-    const { pageYOffset, innerHeight } = window;
-    if (pageYOffset >= innerHeight || standalone) {
-      headRef.current.classList.add(styles.headerVisible)
-    } else {
-      headRef.current.classList.remove(styles.headerVisible)
-    }
-  }, [])
-
   const scrollTop = () => {
     window.scrollTo({top: 0, behavior: 'smooth'});
     if (standalone) {
@@ -35,7 +13,7 @@ export const Header = ({ standalone = false }) => {
   }
 
   return (
-    <div ref={headRef} className={`${styles.header} ${standalone ? styles.headerVisible : ''}`}>
+    <div ref={headRef} className={styles.header} uk-parallax="opacity: 0,1; y: 50,0; end: 95vh + 50%">
       <div className={styles.headerCenter}>
         <img src="https://shinobi-aws-s3-images-bucket.s3.eu-central-1.amazonaws.com/thumbnail_shinobi_logo_ce066ca1ac.png" onClick={scrollTop} />
       </div>

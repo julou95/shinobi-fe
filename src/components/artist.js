@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { remark } from 'remark'
 import html from 'remark-html'
 import matter from 'gray-matter'
+import Icons from '@/components/icons'
 import styles from '@/styles/Artist.module.scss'
 
 const isEven = (nmbr) => nmbr % 2 === 0
@@ -24,7 +25,7 @@ export default function Artist({ data, index }) {
       setDescription(res)
     })
   }, [])
-  
+
   return (
     <div className={styles.artist}>
       <div className={styles.profilePic} uk-parallax={`opacity: 0,1; y: 50,0; end: 85vh + 50%;`}>
@@ -41,7 +42,13 @@ export default function Artist({ data, index }) {
             data.attributes.guest && <h5>Gasttättowierer</h5>
           }
           <h3>{data.attributes.name}</h3>
-          <div className={styles.desctiption} dangerouslySetInnerHTML={{ __html: description }}></div>
+          <div className={styles.description} dangerouslySetInnerHTML={{ __html: description }}></div>
+          {data.attributes.instagram &&
+            <a href={`https://www.instagram.com/${data.attributes.instagram}`} className={styles.instaHandle} target="_blank">
+              <Icons name="instagram" size="24" viewBox="256" />
+              {data.attributes.instagram}
+            </a>
+          }
         </div>
         <div className={styles.descriptionSmall} uk-parallax={`opacity: 0,1; y: 50,0; end: 85vh + 50%;`}>
           <div className={styles.artistHeader}>
@@ -55,7 +62,13 @@ export default function Artist({ data, index }) {
               {/* <Icons name="forth" size="40" /> */}
             </div>
           </div>
-          <div className={styles.desctiption} dangerouslySetInnerHTML={{ __html: description }}></div>
+          <div className={styles.description} dangerouslySetInnerHTML={{ __html: description }}></div>
+          {data.attributes.instagram &&
+            <a href={`https://www.instagram.com/${data.attributes.instagram}`} className={styles.instaHandle} target="_blank">
+              <Icons name="instagram" size="24" viewBox="256" />
+              {data.attributes.instagram}
+            </a>
+          }
         </div>
       </div>
     </div>

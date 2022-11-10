@@ -15,7 +15,7 @@
   }
 }
 
-.desctiption {
+.description {
   a {
     color: $primary;
   }
@@ -51,6 +51,16 @@
 
 .arrow svg {
   fill: $secondary;
+}
+
+.instaHandle {
+  display: flex;
+  align-items: center;
+
+  svg {
+    margin-right: 10px;
+    fill: $primary;
+  }
 }
 
 @media screen and (min-width: 1008px) {

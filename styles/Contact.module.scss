@@ -6,8 +6,8 @@
 }
 
 .verticalSplit {
-  border-bottom: 2px solid #CE9C2F;
-  border-right: 2px solid #CE9C2F;
+  border-bottom: 2px solid $primary;
+  border-right: 2px solid $primary;
   margin: 20px;
 }
 
@@ -47,10 +47,17 @@
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   }
   button {
-    border-color: #CE9C2F;
-    background-color: #CE9C2F;
+    border-color: $primary;
+    background-color: $primary;
     color: white;
     margin-bottom: 0;
+    cursor: pointer;
+    &:hover {
+      background-color: #c0922d;
+    }
+    &:active {
+      background-color: #ab7f1e;
+    }
   }
 }
 

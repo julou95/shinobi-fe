@@ -16,7 +16,7 @@ export default function Footer() {
       <iframe src="https://snazzymaps.com/embed/436830" width="100%" height="300px" style={{ border: 'none' }}></iframe>
       <div className={styles.footerEnd}>
         <div className={styles.content}>
-          Shinobi Tattoo 2022 © <Link href="/impressum">Impressum</Link> | made with <span onClick={click}>{counter === 11 ? '🍆' : '❤️'}</span>
+          <div>Shinobi Tattoo 2022 © <Link href="/impressum">Impressum</Link></div><div>made with <span onClick={click}>{counter === 11 ? '🍆' : '❤️'}</span></div>
         </div>
       </div>
     </footer>

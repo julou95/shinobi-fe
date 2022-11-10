@@ -14,7 +14,6 @@
   font-display: swap;
 }
 
-
 html,
 body {
   padding: 0;
@@ -23,7 +22,7 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 20px;
   background-color: #111;
-  color: white;
+  color: $white;
 }
 
 a {
@@ -48,7 +47,7 @@ h1 {
   text-align: center;
   padding: 30px;
   margin-bottom: 40px;
-  color: white;
+  color: $white;
   span {
     background: linear-gradient(0, $primary 0 50%, transparent 50% 100%);
     background-size: 120%;
@@ -59,7 +58,7 @@ h1 {
 }
 
 h4 {
-  color: white;
+  color: $white;
   span {
     background: linear-gradient(0, $primary 0 50%, transparent 50% 100%);
     background-size: 120%;
@@ -83,7 +82,7 @@ h2, h3 {
     color-scheme: dark;
   }
   body {
-    color: white;
+    color: $white;
     background: #111;
   }
 }

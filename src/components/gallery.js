@@ -31,7 +31,7 @@ export default function Gallery({ data }) {
           </div>
         ))}
       </div>
-      <div className={styles.showAll}>
+      <div className={styles.showAll} uk-parallax="opacity: 0,1; y: 50,0; end: 75vh + 50%">
         <button onClick={() => setShowAll(prev => !prev)}>{showAll ? 'Weniger' : 'Mehr'} anzeigen</button>
       </div>
       {sliced && activeImage >= 0 &&
@@ -52,9 +52,9 @@ export default function Gallery({ data }) {
             <Image
               className={styles.bigImage}
               src={sliced[activeImage]?.attributes?.formats?.large?.url || sliced[activeImage]?.attributes?.url || ''}
-              height={400}
-              width={200}
-              alt={image?.attributes?.alternativeText}
+              height={600}
+              width={1200}
+              alt={sliced[activeImage]?.attributes?.alternativeText}
             />
             {
               activeImage < sliced.length-1 &&
