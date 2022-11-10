@@ -13,7 +13,7 @@ export const Header = ({ standalone = false }) => {
   }
 
   return (
-    <div ref={headRef} className={styles.header} uk-parallax="opacity: 0,1; y: 50,0; end: 95vh + 50%">
+    <div ref={headRef} className={styles.header} uk-parallax={standalone ? '' : 'opacity: 0,1; y: 50,0; end: 95vh + 50%'}>
       <div className={styles.headerCenter}>
         <img src="https://shinobi-aws-s3-images-bucket.s3.eu-central-1.amazonaws.com/thumbnail_shinobi_logo_ce066ca1ac.png" onClick={scrollTop} />
       </div>

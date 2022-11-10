@@ -1,11 +1,10 @@
+import Header from '@/components/header'
 import styles from '@/styles/Impressum.module.scss'
-import { useRouter } from 'next/router'
 
 export default function Impressum({ data }) {
-  const router = useRouter()
-
   return (
     <div className={styles.impressumWrapper}>
+      <Header standalone />
       <h1><span>Impressum</span></h1>
       <p className={styles.impressumText}>
         Kontakt-Adresse<br />

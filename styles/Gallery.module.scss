@@ -55,7 +55,7 @@
 
 .bigImage {
   max-height: 80vh;
-  border: 5px solid #CE9C2F;
+  border: 5px solid $primary;
 }
 
 .closeWrapper {
@@ -79,10 +79,10 @@
     margin-right: 20px;
   }
   &:hover {
-    border-color: #CE9C2F;
-    color: #CE9C2F;
+    border-color: $primary;
+    color: $primary;
     svg {
-      fill: #CE9C2F;
+      fill: $primary;
     }
   }
 }
@@ -120,9 +120,9 @@
     fill: white;
   }
   &:hover {
-    border-color: #CE9C2F;
+    border-color: $primary;
     svg {
-      fill: #CE9C2F;
+      fill: $primary;
     }
   }
 }
@@ -143,7 +143,7 @@
     }
   }
   .active {
-    border-color: #CE9C2F;
+    border-color: $primary;
     z-index: 1;
   }
 
