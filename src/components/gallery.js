@@ -49,11 +49,9 @@ export default function Gallery({ data }) {
                   <Icons name="prev" size={35} />
                 </div>
             }
-            <Image
+            <img
               className={styles.bigImage}
               src={sliced[activeImage]?.attributes?.formats?.large?.url || sliced[activeImage]?.attributes?.url || ''}
-              height={600}
-              width={1200}
               alt={sliced[activeImage]?.attributes?.alternativeText}
             />
             {
