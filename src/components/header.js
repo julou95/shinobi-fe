@@ -1,6 +1,7 @@
-import { useRef, useEffect, useCallback } from 'react'
+import { useRef } from 'react'
 import { useRouter } from 'next/router'
 import styles from '@/styles/Header.module.scss'
+
 export const Header = ({ standalone = false }) => {
   const router = useRouter()
   const headRef = useRef()

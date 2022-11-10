@@ -51,6 +51,13 @@ export default function Artist({ data, index }) {
           }
         </div>
         <div className={styles.descriptionSmall} uk-parallax={`opacity: 0,1; y: 50,0; end: 85vh + 50%;`}>
+          <Image
+            src={data?.attributes?.profilePic?.data[0]?.attributes?.formats?.medium?.url || data?.attributes?.profilePic?.data[0]?.attributes?.url || ''}
+            width={400}
+            height={200}
+            alt={data.attributes.name}
+            className={styles.profilePicSmall}
+          />
           <div className={styles.artistHeader}>
             <div className={styles.artistLeft}>
               <h3>{data.attributes.name}</h3>
@@ -61,14 +68,14 @@ export default function Artist({ data, index }) {
             <div className={styles.arrow}>
               {/* <Icons name="forth" size="40" /> */}
             </div>
+            <div className={styles.description} dangerouslySetInnerHTML={{ __html: description }}></div>
+            {data.attributes.instagram &&
+              <a href={`https://www.instagram.com/${data.attributes.instagram}`} className={styles.instaHandle} target="_blank" rel="noreferrer">
+                <Icons name="instagram" size="24" viewBox="256" />
+                {data.attributes.instagram}
+              </a>
+            }
           </div>
-          <div className={styles.description} dangerouslySetInnerHTML={{ __html: description }}></div>
-          {data.attributes.instagram &&
-            <a href={`https://www.instagram.com/${data.attributes.instagram}`} className={styles.instaHandle} target="_blank" rel="noreferrer">
-              <Icons name="instagram" size="24" viewBox="256" />
-              {data.attributes.instagram}
-            </a>
-          }
         </div>
       </div>
     </div>
