@@ -44,7 +44,7 @@ export default function Artist({ data, index }) {
           <h3>{data.attributes.name}</h3>
           <div className={styles.description} dangerouslySetInnerHTML={{ __html: description }}></div>
           {data.attributes.instagram &&
-            <a href={`https://www.instagram.com/${data.attributes.instagram}`} className={styles.instaHandle} target="_blank">
+            <a href={`https://www.instagram.com/${data.attributes.instagram}`} className={styles.instaHandle} target="_blank" rel="noreferrer">
               <Icons name="instagram" size="24" viewBox="256" />
               {data.attributes.instagram}
             </a>
@@ -64,7 +64,7 @@ export default function Artist({ data, index }) {
           </div>
           <div className={styles.description} dangerouslySetInnerHTML={{ __html: description }}></div>
           {data.attributes.instagram &&
-            <a href={`https://www.instagram.com/${data.attributes.instagram}`} className={styles.instaHandle} target="_blank">
+            <a href={`https://www.instagram.com/${data.attributes.instagram}`} className={styles.instaHandle} target="_blank" rel="noreferrer">
               <Icons name="instagram" size="24" viewBox="256" />
               {data.attributes.instagram}
             </a>
