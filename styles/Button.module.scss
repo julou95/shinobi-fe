@@ -1,0 +1,15 @@
+.button {
+  appearance: none;
+  padding: 10px;
+  border: 2px solid $primary;
+  background-color: transparent;
+  color: $primary;
+  font-size: 25px;
+  transition: 0.1s ease;
+  margin: 0 auto;
+
+  &:active {
+    background-color: $primary;
+    color: $white;
+  }
+}

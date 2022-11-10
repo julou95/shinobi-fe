@@ -20,6 +20,10 @@
   }
 }
 
+.buttonWrapper {
+  display: flex;
+}
+
 @media screen and (min-width: 1008px) {
   .article {
     flex-direction: row;

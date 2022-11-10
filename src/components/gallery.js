@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Icons from '@/components/icons'
+import Button from '@/components/button'
 import styles from '@/styles/Gallery.module.scss'
 
 export default function Gallery({ data }) {
@@ -31,9 +32,12 @@ export default function Gallery({ data }) {
           </div>
         ))}
       </div>
-      <div className={styles.showAll} uk-parallax="opacity: 0,1; y: 50,0; end: 75vh + 50%">
-        <button onClick={() => setShowAll(prev => !prev)}>{showAll ? 'Weniger' : 'Mehr'} anzeigen</button>
-      </div>
+      {
+        images.length > 5 &&
+          <div className={styles.showAll} uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%">
+            <Button clickAction={() => setShowAll(prev => !prev)} text={`${showAll ? 'Weniger' : 'Mehr'} anzeigen`} />
+          </div>
+      }
       {sliced && activeImage >= 0 &&
         <div className={styles.hoverGalleryWrapper}>
           <div className={styles.closeWrapper}>
