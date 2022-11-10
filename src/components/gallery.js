@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Image from 'next/image'
 import Icons from '@/components/icons'
 import styles from '@/styles/Gallery.module.scss'
 
@@ -19,7 +20,13 @@ export default function Gallery({ data }) {
         {sliced.map((image, index) => (
           <div onClick={() => selectImg(index)} key={index}>
             <div className={`uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle ${styles.imgWrapper}`} uk-parallax="opacity: 0,1; y: 50,0; end: 95vh + 50%">
-              <img className={`${styles.image} ${activeImage === index ? styles.active : ''}`} src={image?.attributes?.formats?.small?.url || image?.attributes?.url || ''} />
+              <Image
+                className={`${styles.image} ${activeImage === index ? styles.active : ''}`}
+                src={image?.attributes?.formats?.small?.url || image?.attributes?.url || ''}
+                height={400}
+                width={200}
+                alt={image?.attributes?.alternativeText}
+              />
             </div>
           </div>
         ))}
@@ -42,7 +49,13 @@ export default function Gallery({ data }) {
                   <Icons name="prev" size={35} />
                 </div>
             }
-            <img className={styles.bigImage} src={sliced[activeImage]?.attributes?.formats?.large?.url || sliced[activeImage]?.attributes?.url || ''} />
+            <Image
+              className={styles.bigImage}
+              src={sliced[activeImage]?.attributes?.formats?.large?.url || sliced[activeImage]?.attributes?.url || ''}
+              height={400}
+              width={200}
+              alt={image?.attributes?.alternativeText}
+            />
             {
               activeImage < sliced.length-1 &&
                 <div className={styles.next} onClick={() => selectImg(activeImage + 1)}>

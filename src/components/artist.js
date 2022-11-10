@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { remark } from 'remark'
 import html from 'remark-html'
 import matter from 'gray-matter'
@@ -27,7 +28,12 @@ export default function Artist({ data, index }) {
   return (
     <div className={styles.artist}>
       <div className={styles.profilePic} uk-parallax={`opacity: 0,1; y: 50,0; end: 85vh + 50%;`}>
-        <img src={data?.attributes?.profilePic?.data[0]?.attributes?.formats?.medium?.url || data?.attributes?.profilePic?.data[0]?.attributes?.url || ''} />
+        <Image
+          src={data?.attributes?.profilePic?.data[0]?.attributes?.formats?.medium?.url || data?.attributes?.profilePic?.data[0]?.attributes?.url || ''}
+          width={400}
+          height={200}
+          alt={data.attributes.name}
+        />
       </div>
       <div className={styles.descWrapper}>
         <div className={styles.descriptionLarge} uk-parallax={`opacity: 0,1; ${ isEven(index) ? '' : 'x: 100,100;' } y: 50,0; end: 85vh + 50%;`}>
