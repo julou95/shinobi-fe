@@ -12,6 +12,10 @@
 }
 
 .text {
+  hyphens: auto; 
+	text-align: justify;
+  padding: 0 10px;
+
   h3 {
     margin-top: 0;
   }

@@ -64,14 +64,14 @@ export default function Home({ home, articles, artists, gallery }) {
         <div className={styles.area}>
           <div className={styles.content}>
             <Suspense fallback={<div>...</div>}>
-              <Artists data={artists} />
+              <Gallery data={gallery} />
             </Suspense>
           </div>
         </div>
         <div className={styles.area}>
           <div className={styles.content}>
             <Suspense fallback={<div>...</div>}>
-              <Gallery data={gallery} />
+              <Artists data={artists} />
             </Suspense>
           </div>
         </div>

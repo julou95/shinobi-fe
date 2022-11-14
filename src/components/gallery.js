@@ -5,68 +5,30 @@ import Button from '@/components/button'
 import styles from '@/styles/Gallery.module.scss'
 
 export default function Gallery({ data }) {
-  const [showAll, setShowAll] = useState(false)
-  const [activeImage, setActiveImage] = useState()
   const images = data?.[0]?.attributes?.image?.data || []
-  const sliced = images.slice(0, showAll ? images.length : 5)
-
-  const selectImg = (id) => {
-    setActiveImage(id)
-  }
 
   return (
     <div className={styles.gallery}>
-      <h1 uk-parallax="opacity: 0,1; y: 50,0; end: 75vh + 50%"><span>Galerie</span></h1>
-      <div uk-grid="masonry: true;" className="uk-child-width-1-2@s uk-child-width-1-3@m">
-        {sliced.map((image, index) => (
-          <div onClick={() => selectImg(index)} key={index}>
-            <div className={`uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle ${styles.imgWrapper}`} uk-parallax="opacity: 0,1; y: 50,0; end: 95vh + 50%">
-              <Image
-                className={`${styles.image} ${activeImage === index ? styles.active : ''}`}
-                src={image?.attributes?.formats?.small?.url || image?.attributes?.url || ''}
-                height={400}
-                width={200}
-                alt={image?.attributes?.alternativeText}
+      <h1 uk-parallax="opacity: 0,1; y: 50,0; end: 75vh + 50%"><span>Unser Studio</span></h1>
+      <div uk-parallax="opacity: 0,1; y: 50,0; end: 75vh + 50%" class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1"  uk-slideshow="autoplay: true; min-height: 300; max-height: 600; animation: push;">
+        <ul class="uk-slideshow-items">
+          {images.map((image, index) => (
+            <li key={index}>
+              <img 
+                src={image?.attributes?.formats?.large?.url || image?.attributes?.url || ''}
+                alt=""
+                uk-cover="true"
               />
-            </div>
-          </div>
-        ))}
+            </li>
+          ))}
+        </ul>
+        <a className={`uk-position-center-left uk-position-small ${styles.arrowLeft}`} href="#" uk-slidenav-previous uk-slideshow-item="previous">
+          <Icons name="prev" size="35" />
+        </a>
+        <a className={`uk-position-center-right uk-position-small ${styles.arrowRight}`} href="#" uk-slidenav-next uk-slideshow-item="next">
+          <Icons name="next" size="35" />
+        </a>
       </div>
-      {
-        images.length > 5 &&
-          <div className={styles.showAll} uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%">
-            <Button clickAction={() => setShowAll(prev => !prev)} text={`${showAll ? 'Weniger' : 'Mehr'} anzeigen`} />
-          </div>
-      }
-      {sliced && activeImage >= 0 &&
-        <div className={styles.hoverGalleryWrapper}>
-          <div className={styles.closeWrapper}>
-            <div className={styles.close} onClick={() => setActiveImage(-1)}>
-              <Icons name="close" size={35} />
-              Close
-            </div> 
-          </div>
-          <div className={styles.hoverImageWrapper}>
-            {
-              activeImage > 0 &&
-                <div className={styles.prev} onClick={() => selectImg(activeImage - 1)}>
-                  <Icons name="prev" size={35} />
-                </div>
-            }
-            <img
-              className={styles.bigImage}
-              src={sliced[activeImage]?.attributes?.formats?.large?.url || sliced[activeImage]?.attributes?.url || ''}
-              alt={sliced[activeImage]?.attributes?.alternativeText}
-            />
-            {
-              activeImage < sliced.length-1 &&
-                <div className={styles.next} onClick={() => selectImg(activeImage + 1)}>
-                  <Icons name="next" size={35} />
-                </div>
-            }
-          </div>
-        </div>
-      }
     </div>
   )
 }

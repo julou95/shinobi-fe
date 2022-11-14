@@ -1,17 +1,17 @@
 .footer {
-  background-color: $black;
-  border-top: 5px solid $primary;
+  background-color: $bg-primary;
+  border-top: 5px solid $primary2;
   min-height: 30vh;
   iframe {
     background-color: $black;
-    border-bottom: 5px solid $primary !important;
+    border-bottom: 5px solid $primary2 !important;
   }
 }
 
 .footerEnd {
   text-align: center;
-  color: $gray;
-  background-color: $black;
+  color: $white;
+  background-color: $bg-primary;
   font-size: 18px;
 }
 

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { remark } from 'remark'
 import html from 'remark-html'
@@ -18,6 +19,7 @@ const markdownDesc = async (text) => {
 
 export default function Artist({ data, index }) {
   const [description, setDescription] = useState('')
+  const router = useRouter()
 
   useEffect(() => {
     const fetchDesc = async () => await markdownDesc(data.attributes.description)
@@ -25,6 +27,10 @@ export default function Artist({ data, index }) {
       setDescription(res)
     })
   }, [])
+
+  const goTo = () => {
+    router.push(`/artist/${data.id}`)
+  }
 
   return (
     <div className={styles.artist}>
@@ -37,11 +43,18 @@ export default function Artist({ data, index }) {
         />
       </div>
       <div className={styles.descWrapper}>
-        <div className={styles.descriptionLarge} uk-parallax={`opacity: 0,1; ${ isEven(index) ? '' : 'x: 100,100;' } y: 50,0; end: 85vh + 50%;`}>
-          {
-            data.attributes.guest && <h5>Gasttättowierer</h5>
-          }
-          <h3>{data.attributes.name}</h3>
+        <div className={styles.descriptionLarge} onClick={goTo} uk-parallax={`opacity: 0,1; ${ isEven(index) ? '' : 'x: 100,100;' } y: 50,0; end: 85vh + 50%;`}>
+        <div className={styles.artistHeader}>
+          <div className={styles.artistLeft}>
+            <h3>{data.attributes.name}</h3>
+            {
+              data.attributes.guest && <h5>Gasttättowierer</h5>
+            }
+            </div>
+            <div className={styles.arrow}>
+              <Icons name="forth" size="40" />
+            </div>
+          </div>
           <div className={styles.description} dangerouslySetInnerHTML={{ __html: description }}></div>
           {data.attributes.instagram &&
             <a href={`https://www.instagram.com/${data.attributes.instagram}`} className={styles.instaHandle} target="_blank" rel="noreferrer">
@@ -50,7 +63,7 @@ export default function Artist({ data, index }) {
             </a>
           }
         </div>
-        <div className={styles.descriptionSmall} uk-parallax={`opacity: 0,1; y: 50,0; end: 85vh + 50%;`}>
+        <div className={styles.descriptionSmall} uk-parallax={`opacity: 0,1; y: 50,0; end: 85vh + 50%;`} onClick={goTo}>
           <Image
             src={data?.attributes?.profilePic?.data[0]?.attributes?.formats?.medium?.url || data?.attributes?.profilePic?.data[0]?.attributes?.url || ''}
             width={400}
@@ -66,15 +79,8 @@ export default function Artist({ data, index }) {
               }
             </div>
             <div className={styles.arrow}>
-              {/* <Icons name="forth" size="40" /> */}
+              <Icons name="forth" size="40" />
             </div>
-            <div className={styles.description} dangerouslySetInnerHTML={{ __html: description }}></div>
-            {data.attributes.instagram &&
-              <a href={`https://www.instagram.com/${data.attributes.instagram}`} className={styles.instaHandle} target="_blank" rel="noreferrer">
-                <Icons name="instagram" size="24" viewBox="256" />
-                {data.attributes.instagram}
-              </a>
-            }
           </div>
         </div>
       </div>

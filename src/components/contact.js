@@ -6,7 +6,6 @@ import Icons from './icons'
 export default function Contact() {
   const [showSuccess, setShowSuccess] = useState(false)
   const nameRef = useRef()
-  const emailRef = useRef()
   const phoneRef = useRef()
   const betreffRef = useRef()
   const textRef = useRef()
@@ -14,7 +13,6 @@ export default function Contact() {
   const sendMail = () => {
     const data = {
       name: nameRef.current.value,
-      email: emailRef.current.value,
       phone: phoneRef.current.value,
       betreff: betreffRef.current.value,
       text: textRef.current.value,
@@ -22,7 +20,7 @@ export default function Contact() {
 
     const required = [
       nameRef,
-      emailRef,
+      phoneRef,
       betreffRef,
       textRef,
     ]
@@ -35,10 +33,6 @@ export default function Contact() {
         if (res?.status === 200) {
             setShowSuccess(true)
             reset()
-        } else {
-          if (res.message.includes('email')) {
-            emailRef.current.classList.add(styles.error)
-          }
         }
       })
     } else {
@@ -54,7 +48,6 @@ export default function Contact() {
 
   const reset = () => {
     nameRef.current.value = ''
-    emailRef.current.value = ''
     phoneRef.current.value = ''
     betreffRef.current.value = ''
     textRef.current.value = ''
@@ -92,11 +85,7 @@ export default function Contact() {
             <input type="text" ref={nameRef} placeholder="Name" />
           </label>
           <label>
-            Email *
-            <input type="email" ref={emailRef} placeholder="Email Adresse" />
-          </label>
-          <label>
-            Telefon (optional)
+            Telefon *
             <input type="tel" ref={phoneRef} placeholder="Telefon" />
           </label>
           <label>

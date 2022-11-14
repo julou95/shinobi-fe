@@ -6,11 +6,9 @@
   justify-content: center;
   align-items: center;
   width: 100vw;
-  // height: 100px;
-  background-color: $black;
   color: #11111197;
   transition: all 0.3s;
-  background: linear-gradient(0, transparent 0 30%, rgba(0, 0, 0, 0.548) 34% 35%, $primary 35% 40%, #020202 40% 100%);
+  background: linear-gradient(0, transparent 0 33%, rgba(0, 0, 0, 0.099) 33% 35%, $primary2 35% 40%, $bg-primary 40% 100%);
   background-size: 120%;
   background-repeat: no-repeat;
 }
