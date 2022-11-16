@@ -7,7 +7,7 @@ export default function Document() {
       <Head>
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/logos/icon_x192.png"></link>
-        <meta name="theme-color" content="#042f29" />
+        <meta name="theme-color" content="#a29682" />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.15.12/dist/css/uikit.min.css" />
       </Head>
       <body>
