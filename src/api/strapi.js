@@ -12,6 +12,9 @@ export const fetchContent = (path) => {
     .then(res => {
       return res.data.data
     })
+    .catch(err => {
+      return { error: true }
+    })
 }
 
 export const sendEmail = (data) => {

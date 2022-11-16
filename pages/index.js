@@ -6,7 +6,7 @@ import { fetchContent } from '../src/api/strapi'
 import Header from '@/components/header'
 import styles from '@/styles/Home.module.scss'
 
-export default function Home({ home, articles, artists, gallery }) {
+export default function Home({ home = {}, articles = {}, artists = {}, gallery = {} }) {
   const Welcome = dynamic(() => import('@/components/home'), {
     suspense: true,
   })
@@ -46,35 +46,46 @@ export default function Home({ home, articles, artists, gallery }) {
           </div>
         </div>
         <Header />
-        <div className={styles.area}>
-          <div className={styles.content}>
-            <Suspense fallback={<div>...</div>}>
-              <Welcome data={home.attributes.home[0]} />
-            </Suspense>
-          </div>
-        </div>
-        <div className={styles.divider}></div>
-        <div className={styles.area}>
-          <div className={styles.content}>
-            <Suspense fallback={<div>...</div>}>
-              <News data={articles} />
-            </Suspense>
-          </div>
-        </div>
-        <div className={styles.area}>
-          <div className={styles.content}>
-            <Suspense fallback={<div>...</div>}>
-              <Gallery data={gallery} />
-            </Suspense>
-          </div>
-        </div>
-        <div className={styles.area}>
-          <div className={styles.content}>
-            <Suspense fallback={<div>...</div>}>
-              <Artists data={artists} />
-            </Suspense>
-          </div>
-        </div>
+        {
+          !!home?.attributes?.home?.[0] ? 
+            <div className={styles.area}>
+              <div className={styles.content}>
+                <Suspense fallback={<div>...</div>}>
+                  <Welcome data={home.attributes.home[0]} />
+                </Suspense>
+              </div>
+            </div> : <></>
+        }
+        {
+          !!articles.length ?
+            <div className={styles.area}>
+              <div className={styles.content}>
+                <Suspense fallback={<div>...</div>}>
+                  <News data={articles} />
+                </Suspense>
+              </div>
+            </div> : <></>
+        }
+        {
+          !!gallery.length ?
+            <div className={styles.area}>
+              <div className={styles.content}>
+                <Suspense fallback={<div>...</div>}>
+                  <Gallery data={gallery} />
+                </Suspense>
+              </div>
+            </div> : <></>
+        }
+        {
+          !!artists.length ?
+            <div className={styles.area}>
+              <div className={styles.content}>
+                <Suspense fallback={<div>...</div>}>
+                  <Artists data={artists} />
+                </Suspense>
+              </div>
+            </div> : <></>
+        }
         <div className={styles.area}>
           <div className={styles.content}>
             <Suspense fallback={<div>...</div>}>
