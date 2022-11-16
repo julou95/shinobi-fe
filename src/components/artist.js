@@ -32,10 +32,16 @@ export default function Artist({ data, index }) {
     router.push(`/artist/${data.id}`)
   }
 
+  const openInsta = (e) => {
+    e.stopPropagation()
+    window.open(`https://www.instagram.com/${data.attributes.instagram}`, '_blank')
+  }
+
   return (
     <div className={styles.artist}>
       <div className={styles.profilePic} uk-parallax={`opacity: 0,1; y: 50,0; end: 85vh + 50%;`}>
         <Image
+          className={styles.profilePicLarge}
           src={data?.attributes?.profilePic?.data[0]?.attributes?.formats?.medium?.url || data?.attributes?.profilePic?.data[0]?.attributes?.url || ''}
           width={400}
           height={200}
@@ -57,7 +63,7 @@ export default function Artist({ data, index }) {
           </div>
           <div className={styles.description} dangerouslySetInnerHTML={{ __html: description }}></div>
           {data.attributes.instagram &&
-            <a href={`https://www.instagram.com/${data.attributes.instagram}`} className={styles.instaHandle} target="_blank" rel="noreferrer">
+            <a onClick={openInsta} className={styles.instaHandle} target="_blank" rel="noreferrer">
               <Icons name="instagram" size="24" viewBox="256" />
               {data.attributes.instagram}
             </a>

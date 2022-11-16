@@ -2,6 +2,9 @@
   width: 100%;
   padding: 20px 10px;
   margin: 0 auto 50px;
+  h2 {
+    text-align: center;
+  }
 }
 
 .artist {
@@ -36,7 +39,7 @@
 
 .descriptionSmall {
   border: none;
-  border-bottom: 5px solid $primary2;
+  border-bottom: 5px solid $green;
   border-radius: 5px;
   overflow: hidden;
 }
@@ -46,11 +49,11 @@
   margin-top: -40px;
   padding: 20px;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .artistHeader {
   display: flex;
-  // align-items: center;
   justify-content: space-between;
   padding: 0 10px 10px;
 }
@@ -96,14 +99,71 @@
   width: 100%;
   margin-bottom: 10px;
 }
+.profilePicLarge {
+  border-radius: 5px;
+}
 
 .content {
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  p {
+    margin: 0;
+  }
+}
+
+.artistPic {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.wannados, .instaFeed {
+  margin-top: 30px;
+}
+
+.igGalleryWrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.imgWrapper {
+  display: flex;
+  width: 100%;
+  margin: 5px;
+}
+
+.goToWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 5px;
+  margin-top: 20px;
+
+  .instaButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    background-color: $primary2;
+    padding: 5px 10px;
+    color: $white;
+    border-radius: 10px;
+    svg {
+      margin-right: 10px;
+      fill: $white;
+    }
+  }
 }
 
 @media screen and (min-width: 640px) {
   .container {
     width: 640px;
+  }
+  .imgWrapper {
+    width: calc(50% - 10px);
   }
 }
 
@@ -119,6 +179,7 @@
   .profilePic {
     display: block;
     width: 60%;
+    border-radius: 5px;
   }
   .descWrapper {
     width: 50%;
@@ -137,7 +198,7 @@
     margin-top: 0;
     margin-left: -100px;
     .arrow {
-      opacity: 0;
+      opacity: 0.15;
       transition: all 0.2s ease;
     }
 
@@ -155,7 +216,17 @@
       flex-direction: row-reverse;
     }
   }
+  .content {
+    flex-direction: row;
+  }
+  .artistPic {
+    width: 50%;
+    margin-right: 20px;
+  }
   .descriptionSmall {
     display: none;
+  }
+  .imgWrapper {
+    width: calc(100%/3 - 10px);
   }
 }

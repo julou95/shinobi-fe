@@ -50,7 +50,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  border-top: 5px solid $primary2;
+  border-top: 5px solid $green;
 }
 
 .scrolldownWrapper {
@@ -62,7 +62,7 @@
 .mouse {
 	width: 30px;
 	height: 50px;
-	border: 2px solid $primary2;
+	border: 2px solid $green;
 	border-radius: 60px;
 	position: relative;
   cursor: pointer;
@@ -74,7 +74,7 @@
 		top: 10px;
 		left: 50%;
 		transform: translateX(-50%);
-		background-color: $primary2;
+		background-color: $green;
 		border-radius: 50%;
 		opacity: 1;
 		animation: wheel 2s infinite;

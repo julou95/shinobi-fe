@@ -4,11 +4,10 @@ import Header from '@/components/header'
 import Icons from '@/components/icons'
 import styles from '@/styles/Artist.module.scss'
 import { fetchContent } from '@/api/strapi'
+import { fetchIG } from '@/api/insta'
 import { markdownDesc } from '@/constants/helpers'
 
-export const Artist = ({ artist }) => {
-  console.log('LJ - artist', artist);
-
+export const Artist = ({ artist, images }) => {
   const [description, setDescription] = useState('')
 
   useEffect(() => {
@@ -29,34 +28,44 @@ export const Artist = ({ artist }) => {
       <main className={styles.container}>
         <h1><span>{artist.attributes.name}</span></h1>
         <div className={styles.content}>
-          <img src={artist.attributes?.profilePic?.data?.[0]?.attributes?.formats?.medium?.url || artist.attributes.profilePic.url} />
+          <img className={styles.artistPic} src={artist.attributes?.profilePic?.data?.[0]?.attributes?.formats?.large?.url || artist.attributes.profilePic.url} />
           <p dangerouslySetInnerHTML={{ __html: description }}></p>
-          {artist.attributes?.instagram &&
-            <a href={`https://www.instagram.com/${artist.attributes.instagram}`} className={styles.instaHandle} target="_blank" rel="noreferrer">
+        </div>
+        {artist.attributes?.wannados?.data?.length ?
+          <div className={styles.wannados}>
+            <h2><span>Wanna Dos</span></h2>
+            <div className={styles.igGalleryWrapper}>
+              {artist.attributes?.wannados?.data?.map((image, index) => (
+                <div className={styles.imgWrapper} key={index}>
+                  <img 
+                    src={image?.attributes?.formats?.large?.url || image?.attributes?.url || ''}
+                    alt=""
+                  />
+                </div>
+              ))}
+            </div>
+          </div> : <></>
+        }
+        {
+          images.length ?
+          <div className={styles.instaFeed}>
+            <h2><span>Meine Arbeiten</span></h2>
+            <div className={styles.igGalleryWrapper}>
+              {images.map((img, index) => (
+                <div className={styles.imgWrapper} key={index}>
+                  <img src={img.mediaUrl} />
+                </div>
+              ))}
+            </div>
+          </div> : <></>
+        }
+        {artist.attributes?.instagram &&
+          <div className={styles.goToWrapper}>
+            <a href={`https://www.instagram.com/${artist.attributes.instagram}`} className={styles.instaButton} target="_blank" rel="noreferrer">
               <Icons name="instagram" size="24" viewBox="256" />
               {artist.attributes.instagram}
             </a>
-          }
-        </div>
-        {artist.attributes?.wannados?.data?.length &&
-          <>
-            <h3>Wanna Dos</h3>
-            <div className="uk-position-relative uk-visible-toggle uk-light" tabIndex="-1"  uk-slideshow="autoplay: true; animation: push;" uk-parallax="opacity: 0,1; y: 50,0; end: 75vh + 50%">
-              <ul className="uk-slideshow-items">
-                {artist.attributes?.wannados?.data?.map((image, index) => (
-                  <li key={index}>
-                    <div className="uk-position-cover uk-animation-kenburns uk-animation-reverse uk-transform-origin-bottom-left">
-                      <img 
-                        src={image?.attributes?.formats?.large?.url || image?.attributes?.url || ''}
-                        alt=""
-                        uk-cover
-                      />
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </>
+          </div>
         }
       </main>
     </>
@@ -65,10 +74,12 @@ export const Artist = ({ artist }) => {
 
 export async function getServerSideProps({ params }) {
   const artist = await fetchContent(`artists/${params.artistId}`)
+  const igImages = artist?.attributes?.instaFeed ? await fetchIG(artist?.attributes?.instaFeed) : []
 
   return {
     props: {
       artist,
+      images: igImages?.media || [],
     }
   }
 }

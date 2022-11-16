@@ -41,6 +41,10 @@ a {
 h1, h2, h3, h4, h5 {
   font-family: 'raleway', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
   Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  span {
+    padding: 0 10px;
+    border-bottom: 2px solid $primary2;
+  }
 }
 
 h1 {
@@ -48,11 +52,6 @@ h1 {
   padding: 15px;
   margin-bottom: 20px;
   color: $primary2;
-  // border-top: 2px solid $primary2;
-  span {
-    padding: 0 10px;
-    border-bottom: 2px solid $primary2;
-  }
 }
 
 h4 {

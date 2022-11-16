@@ -82,19 +82,19 @@ export default function Contact() {
         <div className={styles.contactRight} uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%;">
           <label>
             Name *
-            <input type="text" ref={nameRef} placeholder="Name" />
+            <input type="text" ref={nameRef} />
           </label>
           <label>
             Telefon *
-            <input type="tel" ref={phoneRef} placeholder="Telefon" />
+            <input type="tel" ref={phoneRef} />
           </label>
           <label>
             Betreff *
-            <input type="text" ref={betreffRef} placeholder="Betreff" />
+            <input type="text" ref={betreffRef} />
           </label>
           <label>
             Nachricht *
-            <textarea ref={textRef} placeholder="Text"></textarea>
+            <textarea ref={textRef}></textarea>
           </label>
           <button onClick={sendMail}>Senden</button>
             {
