@@ -72,10 +72,10 @@ export default function Contact() {
           <h3><span>Adresse</span></h3>
           <div>Shinobi-Tattoo</div>
           <div>
-            Seftigenstrasse 83
+            Gurtenareal 12
           </div>
           <div>
-            3007 Bern
+            3084 Köniz
           </div>
         </div>
         <div className={styles.verticalSplit} uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%;"></div>
