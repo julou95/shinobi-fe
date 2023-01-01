@@ -56,6 +56,9 @@ export default function Artist({ data, index }) {
             {
               data.attributes.guest && <h5>Gasttättowierer</h5>
             }
+            {
+              data.attributes.inAusbildung && <h5>In Ausbildung</h5>
+            }
             </div>
             <div className={styles.arrow}>
               <Icons name="forth" size="40" />
