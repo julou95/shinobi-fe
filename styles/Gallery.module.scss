@@ -1,11 +1,83 @@
-.gallery {
-  margin-bottom: 50px;
+.container, .carouselContainer {
+  width: 100%;
+  padding: 20px 10px;
+  margin: 0 auto 50px;
+  h2 {
+    text-align: center;
+  }
+}
+.carouselContainer {
+  margin-top: 150px;
 }
 
-.arrowLeft, .arrowRight {
-  margin: 10px;
-  opacity: 0.6;
+.galleryWrapper {
+  display: grid;
+  grid-template-columns: auto;
+}
+
+.imageWrapper {
+    margin: 5px;
+    overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 310px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.carouselWrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.95);
+}
+
+.mySwiperWrapper div {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.slide {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.close {
+  text-align: right;
+  color: white;
+  cursor: pointer;
   svg {
     fill: white;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .container, .carouselContainer {
+    width: 640px;
+  }
+  .galleryWrapper {
+    grid-template-columns: auto auto;
+  }
+}
+
+@media screen and (min-width: 1008px) {
+  .container, .carouselContainer {
+    width: 1000px;
+    padding: 20px;
+  }
+  .galleryWrapper {
+    grid-template-columns: auto auto auto;
   }
 }

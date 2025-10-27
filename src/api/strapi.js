@@ -8,11 +8,12 @@ const headers = {
 }
 
 export const fetchContent = (path) => {
-  return axios.get(`${strapiUrl()}/api/${path}?populate=*&sort=id`, { headers })
+  return axios.get(`${strapiUrl()}/api/${path}?populate=*`, { headers })
     .then(res => {
       return res.data.data
     })
     .catch(err => {
+      console.log('error: ', err)
       return { error: true }
     })
 }

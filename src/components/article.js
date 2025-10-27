@@ -1,5 +1,6 @@
 import styles from '@/styles/Article.module.scss'
 import Image from 'next/image'
+import Markdown from 'react-markdown'
 
 export default function Article({ data }) {
   const formatDate = (date) => {
@@ -11,16 +12,20 @@ export default function Article({ data }) {
     <div className={styles.article}>
       <Image
         className={styles.articleImage}
-        src={data?.attributes?.image?.data?.attributes?.formats?.medium?.url || data?.attributes?.image?.data?.attributes?.url || ''}
+        src={`http://localhost:1337${data?.Image?.formats?.medium?.url || data?.Image?.url || ''}`}
         uk-parallax="opacity: 0,1; y: 50,0; end: 75vh + 50%"
         width={400}
         height={200}
-        alt={data.attributes.title}
+        alt={data.title}
       />
       <div className={styles.text} uk-parallax="opacity: 0,1; y: 50,0; end: 75vh + 50%">
-        <h5>{formatDate(data.attributes.publishedAt)}</h5>
-        <h3>{data.attributes.title}</h3>
-        <p>{data.attributes.text}</p>
+        <h5>{formatDate(data.publishedAt)}</h5>
+        <h2>{data.Title}</h2>
+        <div>
+          <Markdown>
+            {data.Content}
+          </Markdown>
+        </div>
       </div>
     </div>
   )

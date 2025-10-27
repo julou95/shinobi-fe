@@ -12,7 +12,20 @@ const nextConfig = withPWA({
     prependData: `@import "@/styles/variables.scss";`,
   },
   images: {
-    domains: ['shinobi-aws-s3-images-bucket.s3.eu-central-1.amazonaws.com']
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'renowned-hope-a2af077664.media.strapiapp.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '1337',
+        pathname: '/**',
+      },
+    ],
   },
   swcMinify: true,
   productionBrowserSourceMaps: true,

@@ -44,9 +44,8 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
-  width: 100vw;
-  padding: 20px 20px 20px 40px;
-  background: url('/shinobi-bg.jpeg');
+  width: 100%;
+  background: url('/shinobi-bg.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -91,11 +90,11 @@
 .logo img {
   width: 100%;
   max-width: 600px;
-  animation: fadeIn 1s;
+  animation: fadeIn 3s;
 }
 
 .area {
-  width: 100vw;
+  width: 100%;
 }
 
 .homeWrapper {
@@ -138,5 +137,6 @@
 
 @keyframes fadeIn {
   0% { opacity: 0;}
+  80% { opacity: 0;}
   100% { opacity: 1;}
 }

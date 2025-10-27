@@ -1,12 +1,12 @@
 import Header from '@/components/header'
-import styles from '@/styles/Impressum.module.scss'
+import styles from '@/styles/Artist.module.scss'
 
 export default function Impressum({ data }) {
   return (
-    <div className={styles.impressumWrapper}>
+    <>
       <Header standalone />
-      <h1><span>Impressum</span></h1>
-      <p className={styles.impressumText}>
+      <main className={styles.container}>
+        <h1><span>Impressum</span></h1>
         Kontakt-Adresse<br />
         Shinobi-Tattoo<br />
         Alain Heutschi<br />
@@ -33,7 +33,7 @@ export default function Impressum({ data }) {
 
         Urheberrechte<br />
         Die Urheber- und alle anderen Rechte an Inhalten, Bildern, Fotos oder anderen Dateien auf dieser Website, gehören ausschliesslich Alain Heutschi oder den speziell genannten Rechteinhabern. Für die Reproduktion jeglicher Elemente ist die schriftliche Zustimmung des Urheberrechtsträgers im Voraus einzuholen.
-      </p>
-    </div>
+      </main>
+    </>
   )
 }

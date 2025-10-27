@@ -6,7 +6,7 @@ import { fetchContent } from '../src/api/strapi'
 import Header from '@/components/header'
 import styles from '@/styles/Home.module.scss'
 
-export default function Home({ home = {}, articles = {}, artists = {}, gallery = {} }) {
+export default function Home({ home = {}, articles = {}, artists = {}, gallery = {}, blogPosts = {} }) {
   const Welcome = dynamic(() => import('@/components/home'), {
     suspense: true,
   })
@@ -47,21 +47,21 @@ export default function Home({ home = {}, articles = {}, artists = {}, gallery =
         </div>
         <Header />
         {
-          !!home?.attributes?.home?.[0] ? 
+          !!home?.Title ? 
             <div className={styles.area}>
               <div className={styles.content}>
                 <Suspense fallback={<div>...</div>}>
-                  <Welcome data={home.attributes.home[0]} />
+                  <Welcome data={home} />
                 </Suspense>
               </div>
             </div> : <></>
         }
         {
-          !!articles.length ?
+          !!blogPosts.length ?
             <div className={styles.area}>
               <div className={styles.content}>
                 <Suspense fallback={<div>...</div>}>
-                  <News data={articles} />
+                  <News data={blogPosts} />
                 </Suspense>
               </div>
             </div> : <></>
@@ -99,17 +99,14 @@ export default function Home({ home = {}, articles = {}, artists = {}, gallery =
 }
 
 export async function getServerSideProps(context) {
-  const home = await fetchContent('homepage')
-  const articles = await fetchContent('articles')
+  const home = await fetchContent('home')
   const artists = await fetchContent('artists')
-  const gallery = await fetchContent('galleries')
-
+  const blogPosts = await fetchContent('blog-posts')
   return {
     props: {
       home,
-      articles,
+      blogPosts,
       artists,
-      gallery,
     }
   }
 }

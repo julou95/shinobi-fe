@@ -17,47 +17,47 @@ const markdownDesc = async (text) => {
   return parsedHtml;
 }
 
-export default function Artist({ data, index }) {
+export default function Artist({ data, index, standalone = false }) {
   const [description, setDescription] = useState('')
   const router = useRouter()
 
   useEffect(() => {
-    const fetchDesc = async () => await markdownDesc(data.attributes.description)
+    const fetchDesc = async () => await markdownDesc(data.description)
     fetchDesc().then(res => {
       setDescription(res)
     })
   }, [])
 
   const goTo = () => {
-    router.push(`/artist/${data.id}`)
+    router.push(`/artist/${data.documentId}`)
   }
 
   const openInsta = (e) => {
     e.stopPropagation()
-    window.open(`https://www.instagram.com/${data.attributes.instagram}`, '_blank')
+    window.open(`https://www.instagram.com/${data.instagram}`, '_blank')
   }
 
   return (
-    <div className={styles.artist}>
-      <div className={styles.profilePic} uk-parallax={`opacity: 0,1; y: 50,0; end: 85vh + 50%;`}>
+    <div className={styles.artist} onClick={goTo} uk-parallax={standalone ? '' : 'opacity: 0,1; y: 50,0; end: 85vh + 50%;'}>
+      <div className={styles.profilePic}>
         <Image
           className={styles.profilePicLarge}
-          src={data?.attributes?.profilePic?.data[0]?.attributes?.formats?.medium?.url || data?.attributes?.profilePic?.data[0]?.attributes?.url || ''}
+          src={`http://localhost:1337${data?.profilePic[0]?.formats?.medium?.url || data?.profilePic[0]?.url || ''}`}
           width={400}
           height={200}
-          alt={data.attributes.name}
+          alt={data.name}
         />
       </div>
       <div className={styles.descWrapper}>
-        <div className={styles.descriptionLarge} onClick={goTo} uk-parallax={`opacity: 0,1; ${ isEven(index) ? '' : 'x: 100,100;' } y: 50,0; end: 85vh + 50%;`}>
+        <div className={styles.descriptionLarge}>
         <div className={styles.artistHeader}>
           <div className={styles.artistLeft}>
-            <h3>{data.attributes.name}</h3>
+            <h3>{data.name}</h3>
             {
-              data.attributes.guest && <h5>Gasttättowierer</h5>
+              data.guest && <h5>Gasttättowierer</h5>
             }
             {
-              data.attributes.inAusbildung && <h5>In Ausbildung</h5>
+              data.inAusbildung && <h5>In Ausbildung</h5>
             }
             </div>
             <div className={styles.arrow}>
@@ -65,26 +65,26 @@ export default function Artist({ data, index }) {
             </div>
           </div>
           <div className={styles.description} dangerouslySetInnerHTML={{ __html: description }}></div>
-          {data.attributes.instagram &&
+          {data.instagram &&
             <a onClick={openInsta} className={styles.instaHandle} target="_blank" rel="noreferrer">
               <Icons name="instagram" size="24" viewBox="256" />
-              {data.attributes.instagram}
+              {data.instagram}
             </a>
           }
         </div>
-        <div className={styles.descriptionSmall} uk-parallax={`opacity: 0,1; y: 50,0; end: 85vh + 50%;`} onClick={goTo}>
+        <div className={styles.descriptionSmall} onClick={goTo}>
           <Image
-            src={data?.attributes?.profilePic?.data[0]?.attributes?.formats?.medium?.url || data?.attributes?.profilePic?.data[0]?.attributes?.url || ''}
+            src={`http://localhost:1337${data?.profilePic[0]?.formats?.medium?.url || data?.profilePic[0]?.url || ''}`}
             width={400}
             height={200}
-            alt={data.attributes.name}
+            alt={data.name}
             className={styles.profilePicSmall}
           />
           <div className={styles.artistHeader}>
             <div className={styles.artistLeft}>
-              <h3>{data.attributes.name}</h3>
+              <h3>{data.name}</h3>
               {
-                data.attributes.guest && <h5>Gasttättowierer</h5>
+                data.guest && <h5>Gasttättowierer</h5>
               }
             </div>
             <div className={styles.arrow}>

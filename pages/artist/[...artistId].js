@@ -11,7 +11,7 @@ export const Artist = ({ artist, images }) => {
   const [description, setDescription] = useState('')
 
   useEffect(() => {
-    const fetchDesc = async () => await markdownDesc(artist.attributes.description)
+    const fetchDesc = async () => await markdownDesc(artist.description || 'test')
     fetchDesc().then(res => {
       setDescription(res)
     })
@@ -26,21 +26,18 @@ export const Artist = ({ artist, images }) => {
       </Head>
       <Header standalone />
       <main className={styles.container}>
-        <h1><span>{artist.attributes.name}</span></h1>
+        <h1><span>{artist.name}</span></h1>
         <div className={styles.content}>
-          <img className={styles.artistPic} src={artist.attributes?.profilePic?.data?.[0]?.attributes?.formats?.large?.url || artist.attributes.profilePic.url} />
+          <img className={styles.artistPic} src={`http://localhost:1337${artist?.profilePic[0]?.formats?.medium?.url || artist?.profilePic[0]?.url || ''}`} />
           <p dangerouslySetInnerHTML={{ __html: description }}></p>
         </div>
-        {artist.attributes?.wannados?.data?.length ?
+        {artist.wannados?.length ?
           <div className={styles.wannados}>
             <h2><span>Wanna Dos</span></h2>
             <div className={styles.igGalleryWrapper}>
-              {artist.attributes?.wannados?.data?.map((image, index) => (
+              {artist.wannados?.map((image, index) => (
                 <div className={styles.imgWrapper} key={index}>
-                  <img 
-                    src={image?.attributes?.formats?.large?.url || image?.attributes?.url || ''}
-                    alt=""
-                  />
+                  test
                 </div>
               ))}
             </div>
@@ -59,11 +56,11 @@ export const Artist = ({ artist, images }) => {
             </div>
           </div> : <></>
         }
-        {artist.attributes?.instagram &&
+        {artist.instagram &&
           <div className={styles.goToWrapper}>
-            <a href={`https://www.instagram.com/${artist.attributes.instagram}`} className={styles.instaButton} target="_blank" rel="noreferrer">
+            <a href={`https://www.instagram.com/${artist.instagram}`} className={styles.instaButton} target="_blank" rel="noreferrer">
               <Icons name="instagram" size="24" viewBox="256" />
-              {artist.attributes.instagram}
+              {artist.instagram}
             </a>
           </div>
         }
@@ -74,7 +71,7 @@ export const Artist = ({ artist, images }) => {
 
 export async function getServerSideProps({ params }) {
   const artist = await fetchContent(`artists/${params.artistId}`)
-  const igImages = artist?.attributes?.instaFeed ? await fetchIG(artist?.attributes?.instaFeed) : []
+  const igImages = artist?.instaFeed ? await fetchIG(artist?.instaFeed) : []
 
   return {
     props: {

@@ -5,9 +5,6 @@ import styles from '@/styles/Footer.module.scss'
 export default function Footer() {
   const [counter, setCounter] = useState(0)
   const click = () => {
-    if (counter === 10) {
-      console.log('gotcha! 🍆');
-    }
     setCounter(prev => prev+1)
   }
 

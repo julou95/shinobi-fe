@@ -1,0 +1,30 @@
+.wrapper {
+  width: 100%;
+}
+
+.container {
+  background-color: $black;
+}
+
+.content {
+  width: 100%;
+  padding: 20px 0;
+  margin: 0 auto;
+}
+
+.area {
+  width: 100%;
+}
+
+@media screen and (min-width: 640px) {
+  .content {
+    width: 640px;
+  }
+}
+
+@media screen and (min-width: 1008px) {
+  .content {
+    width: 1000px;
+    padding: 20px;
+  }
+}
