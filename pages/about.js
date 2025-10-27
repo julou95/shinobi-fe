@@ -4,8 +4,6 @@ import Header from '@/components/header'
 import styles from '@/styles/Artist.module.scss'
 import { fetchContent } from '@/api/strapi'
 export const About = ({ about }) => {
-
-  console.log('about:', about)
   return (
     <>
       <Head>

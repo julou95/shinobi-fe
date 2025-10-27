@@ -29,7 +29,6 @@ export const Header = ({ standalone = false }) => {
     document.getElementsByTagName('body')[0].style.overflow = isOpen ? '' : 'hidden'
 
     setTimeout(() => {
-      console.log('document.getElementsByTagName(body)', document)
       setIsOpen(!isOpen);
     }, 200)
   };
