@@ -16,7 +16,7 @@ export default function Article({ data }) {
         uk-parallax="opacity: 0,1; y: 50,0; end: 75vh + 50%"
         width={400}
         height={200}
-        alt={data.title}
+        alt={data.Title}
       />
       <div className={styles.text} uk-parallax="opacity: 0,1; y: 50,0; end: 75vh + 50%">
         <h5>{formatDate(data.publishedAt)}</h5>

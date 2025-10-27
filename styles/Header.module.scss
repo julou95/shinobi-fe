@@ -1,8 +1,7 @@
 .header {
   position: sticky;
   top: 0;
-  z-index: 1;
-  height: 172px;
+  z-index: 2;
   width: 100%;
   color: #11111197;
   transition: all 0.3s;
@@ -16,6 +15,7 @@
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .headerCenter {
@@ -55,6 +55,49 @@
   }
 }
 
+.icon {
+  position: relative;
+  height: 40px;
+  width: 40px;
+}
+
+.menuSmall {
+  margin: 0 30px 30px;
+}
+
+.line {
+  position: absolute;
+  width: 40px;
+  height: 3px;
+  background-color: $bg-primary-light;
+  transition: all 0.3s ease;
+}
+
+.top {
+  top: 0;
+}
+.center {
+  top: 12px;
+}
+.bottom {
+  top: 24px;
+}
+
+.open {
+  .center {
+    transform: rotate(30deg);
+    opacity: 0;
+  }
+  .top {
+    transform: rotate(45deg);
+    top: 12px;
+  }
+  .bottom {
+    transform: rotate(135deg);
+    top: 12px;
+  }
+}
+
 @media screen and (min-width: 640px) {
   .content {
     width: 640px;
@@ -62,15 +105,22 @@
 }
 
 @media screen and (min-width: 1008px) {
+  .header {
+    height: 172px;
+  }
+
   .menuLarge {
     display: flex;
   }
-  .menuMobile {
-    visibility: hidden;
+
+  .menuSmall {
+    display: none;
   }
 
   .content {
     width: 1000px;
+    justify-content: space-between;
+    align-items: normal;
   }
 
   .headerCenter {
@@ -78,5 +128,64 @@
     img {
       width: 180px;
     }
+  }
+}
+
+
+.overlay {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.naviOpen {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 50px;
+  top: 30px;
+  height: 0;
+  width: 0;
+  background-color: $green-light;
+  animation: openNavi .3s forwards;
+  border-radius: 50%;
+  
+}
+
+.navItemWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.naviItem {
+  padding: 15px;
+  margin: 5px 0;
+  color: $bg-primary;
+  font-size: larger;
+  width: 100%;
+  text-align: center;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  &:hover, &:active {
+    border-bottom: 1px solid $bg-primary-light;
+    background-color: $green;
+  }
+}
+
+@keyframes openNavi {
+  to {
+    height: 100vh;
+    width: 100vw;
+    right: 0;
+    top: 0;
+    border-radius: 0;
   }
 }

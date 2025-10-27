@@ -7,7 +7,7 @@
   }
 }
 .carouselContainer {
-  margin-top: 150px;
+  margin-top: 75px;
 }
 
 .galleryWrapper {
@@ -28,13 +28,16 @@
   background-position: center;
   transition: all 0.3s ease-in-out;
   cursor: pointer;
+  filter: grayscale(20%);
 
   &:hover {
     transform: scale(1.05);
+    filter: grayscale(0%);
   }
 }
 
 .carouselWrapper {
+  z-index: 99;
   position: fixed;
   top: 0;
   right: 0;

@@ -20,8 +20,13 @@ export const Gallery = ({ gallery }) => {
     const [activeIndex, setActiveIndex] = useState(0);
 
     const openGallery = (index) => {
+        document.getElementsByTagName('body')[0].style.overflow = 'hidden'
         setActiveIndex(index)
         setIsOpen(true)
+    }
+    const closeGallery = () => {
+        document.getElementsByTagName('body')[0].style.overflow = ''
+        setIsOpen(false)
     }
 
     const swiperLoad = (swiper) => {
@@ -57,7 +62,7 @@ export const Gallery = ({ gallery }) => {
             isOpen &&
                 <div className={styles.carouselWrapper}>
                     <div className={styles.carouselContainer}>
-                        <div className={styles.close} onClick={() => setIsOpen(false)}>
+                        <div className={styles.close} onClick={closeGallery}>
                             <Icons name='close' size='36' />
                         </div>
                         <Swiper
@@ -73,8 +78,8 @@ export const Gallery = ({ gallery }) => {
                             onSwiper={swiperLoad}
                         >
                             {gallery.images?.map(image => (
-                                <SwiperSlide className={styles.slide} key={image.formats.medium.name}>
-                                    <img src={`${image.formats.medium.url}`} />
+                                <SwiperSlide className={styles.slide} key={image.formats.large.name}>
+                                    <img src={`${image.formats.large.url}`} />
                                 </SwiperSlide>
                             ))}
                         </Swiper>

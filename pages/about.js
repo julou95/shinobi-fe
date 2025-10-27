@@ -1,10 +1,11 @@
 import Head from 'next/head'
+import Markdown from 'react-markdown'
 import Header from '@/components/header'
 import styles from '@/styles/Artist.module.scss'
 import { fetchContent } from '@/api/strapi'
+export const About = ({ about }) => {
 
-export const About = ({ gallery }) => {
-
+  console.log('about:', about)
   return (
     <>
       <Head>
@@ -15,17 +16,20 @@ export const About = ({ gallery }) => {
       <Header standalone />
       <main className={styles.container}>
         <h1><span>About</span></h1>
+        <Markdown>
+          {about.description}
+        </Markdown>
       </main>
     </>
   )
 }
 
 export async function getServerSideProps({ params }) {
-  const gallery = await fetchContent(`gallery`)
+  const about = await fetchContent(`about`)
 
   return {
     props: {
-      gallery,
+      about,
     }
   }
 }
