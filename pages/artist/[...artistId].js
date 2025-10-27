@@ -28,7 +28,7 @@ export const Artist = ({ artist, images }) => {
       <main className={styles.container}>
         <h1><span>{artist.name}</span></h1>
         <div className={styles.content}>
-          <img className={styles.artistPic} src={`http://localhost:1337${artist?.profilePic[0]?.formats?.medium?.url || artist?.profilePic[0]?.url || ''}`} />
+          <img className={styles.artistPic} src={`${artist?.profilePic[0]?.formats?.medium?.url || artist?.profilePic[0]?.url || ''}`} />
           <p dangerouslySetInnerHTML={{ __html: description }}></p>
         </div>
         {artist.wannados?.length ?

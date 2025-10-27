@@ -41,9 +41,9 @@ export const Gallery = ({ gallery }) => {
         <div className={styles.galleryWrapper}>
             {
                 gallery.images?.map((image, index) =>
-                    <div className={styles.imageWrapper}>
+                    <div className={styles.imageWrapper} key={image.formats.medium.name}>
                         <div
-                            style={{ backgroundImage: `url(http://localhost:1337${image.formats.medium.url})` }}
+                            style={{ backgroundImage: `url(${image.formats.medium.url})` }}
                             alt={image.formats.medium.name}
                             className={styles.image}
                             onClick={() => openGallery(index)}
@@ -73,8 +73,8 @@ export const Gallery = ({ gallery }) => {
                             onSwiper={swiperLoad}
                         >
                             {gallery.images?.map(image => (
-                                <SwiperSlide className={styles.slide}>
-                                    <img src={`http://localhost:1337${image.formats.medium.url}`} />
+                                <SwiperSlide className={styles.slide} key={image.formats.medium.name}>
+                                    <img src={`${image.formats.medium.url}`} />
                                 </SwiperSlide>
                             ))}
                         </Swiper>

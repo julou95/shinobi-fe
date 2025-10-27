@@ -19,12 +19,6 @@ const nextConfig = withPWA({
         port: '',
         pathname: '/**',
       },
-      {
-        protocol: 'http',
-        hostname: 'localhost',
-        port: '1337',
-        pathname: '/**',
-      },
     ],
   },
   swcMinify: true,
