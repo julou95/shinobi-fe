@@ -12,7 +12,7 @@ export default function Article({ data }) {
     <div className={styles.article}>
       <Image
         className={styles.articleImage}
-        src={`http://localhost:1337${data?.Image?.formats?.medium?.url || data?.Image?.url || ''}`}
+        src={`${data?.Image?.formats?.medium?.url || data?.Image?.url || ''}`}
         uk-parallax="opacity: 0,1; y: 50,0; end: 75vh + 50%"
         width={400}
         height={200}
