@@ -36,7 +36,7 @@ export const Artists = ({ artists = {} }) => {
 }
 
 export async function getServerSideProps({ params }) {
-  const artists = await fetchContent(`artists`)
+  const artists = await fetchContent(`artists`, '&sort=sort')
 
   return {
     props: {

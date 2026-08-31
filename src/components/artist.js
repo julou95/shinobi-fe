@@ -1,32 +1,15 @@
-import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-import { remark } from 'remark'
-import html from 'remark-html'
-import matter from 'gray-matter'
 import Icons from '@/components/icons'
 import styles from '@/styles/Artist.module.scss'
+import Markdown from 'react-markdown'
 
 const isEven = (nmbr) => nmbr % 2 === 0
 
-const markdownDesc = async (text) => {
-  const matterResult = matter(text);
-  const parsed = await remark().use(html).process(matterResult.content);
-  const parsedHtml = parsed.toString()
-
-  return parsedHtml;
-}
 
 export default function Artist({ data, index, standalone = false }) {
-  const [description, setDescription] = useState('')
   const router = useRouter()
 
-  useEffect(() => {
-    const fetchDesc = async () => await markdownDesc(data.description)
-    fetchDesc().then(res => {
-      setDescription(res)
-    })
-  }, [])
 
   const goTo = () => {
     router.push(`/artist/${data.documentId}`)
@@ -42,7 +25,7 @@ export default function Artist({ data, index, standalone = false }) {
       <div className={styles.profilePic}>
         <Image
           className={styles.profilePicLarge}
-          src={`${data?.profilePic[0]?.formats?.medium?.url || data?.profilePic[0]?.url || ''}`}
+          src={`http://localhost:1337${data?.profilePic[0]?.url || ''}`}
           width={400}
           height={200}
           alt={data.name}
@@ -64,7 +47,11 @@ export default function Artist({ data, index, standalone = false }) {
               <Icons name="forth" size="40" />
             </div>
           </div>
-          <div className={styles.description} dangerouslySetInnerHTML={{ __html: description }}></div>
+          <div className={styles.description}>
+            <Markdown>
+              {data.description}
+            </Markdown>
+          </div>
           {data.instagram &&
             <a onClick={openInsta} className={styles.instaHandle} target="_blank" rel="noreferrer">
               <Icons name="instagram" size="24" viewBox="256" />
@@ -74,7 +61,7 @@ export default function Artist({ data, index, standalone = false }) {
         </div>
         <div className={styles.descriptionSmall} onClick={goTo}>
           <Image
-            src={`${data?.profilePic[0]?.formats?.medium?.url || data?.profilePic[0]?.url || ''}`}
+            src={`http://localhost:1337${data?.profilePic[0]?.formats?.medium?.url || data?.profilePic[0]?.url || ''}`}
             width={400}
             height={200}
             alt={data.name}

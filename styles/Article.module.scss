@@ -1,14 +1,17 @@
 .article {
   display: flex;
   flex-direction: column;
-  margin-bottom: 30px;
+  padding-bottom: 40px;
+  margin-bottom: 40px;
   border-bottom: 2px solid rgba($primary2, 0.3);
+}
+.article:last-child {
+  border-bottom: none;
 }
 
 .articleImage {
   width: 100%;
   height: 100%;
-  margin-bottom: 20px;
   flex-shrink: 0;
 }
 

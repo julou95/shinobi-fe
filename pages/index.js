@@ -100,7 +100,7 @@ export default function Home({ home = {}, articles = {}, artists = {}, gallery =
 
 export async function getServerSideProps(context) {
   const home = await fetchContent('home')
-  const artists = await fetchContent('artists')
+  const artists = await fetchContent('artists', '&sort=sort')
   const blogPosts = await fetchContent('blog-posts')
   return {
     props: {

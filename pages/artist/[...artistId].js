@@ -1,22 +1,12 @@
-import { useState, useEffect } from 'react'
 import Head from 'next/head'
 import Header from '@/components/header'
 import Icons from '@/components/icons'
 import styles from '@/styles/Artist.module.scss'
 import { fetchContent } from '@/api/strapi'
 import { fetchIG } from '@/api/insta'
-import { markdownDesc } from '@/constants/helpers'
+import Markdown from 'react-markdown'
 
 export const Artist = ({ artist, images }) => {
-  const [description, setDescription] = useState('')
-
-  useEffect(() => {
-    const fetchDesc = async () => await markdownDesc(artist.description || 'test')
-    fetchDesc().then(res => {
-      setDescription(res)
-    })
-  }, [])
-
   return (
     <>
       <Head>
@@ -28,8 +18,12 @@ export const Artist = ({ artist, images }) => {
       <main className={styles.container}>
         <h1><span>{artist.name}</span></h1>
         <div className={styles.content}>
-          <img className={styles.artistPic} src={`${artist?.profilePic[0]?.formats?.medium?.url || artist?.profilePic[0]?.url || ''}`} />
-          <p dangerouslySetInnerHTML={{ __html: description }}></p>
+          <img className={styles.artistPic} src={`http://localhost:1337${artist?.profilePic[0]?.formats?.medium?.url || artist?.profilePic[0]?.url || ''}`} />
+          <p>
+            <Markdown>
+              {artist.longDescription}
+            </Markdown>
+          </p>
         </div>
         {artist.wannados?.length ?
           <div className={styles.wannados}>

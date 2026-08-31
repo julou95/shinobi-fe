@@ -1,0 +1,172 @@
+.container {
+  width: 100%;
+  min-height: 55vh;
+  padding: 20px 10px;
+  margin: 0 auto 50px;
+  h2 {
+    text-align: center;
+  }
+}
+
+.contactWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.verticalSplit {
+  border-bottom: 2px solid $primary2;
+  border-right: 2px solid $primary2;
+  margin: 20px 0;
+}
+
+.contactLeft, .contactRight {
+  flex-grow: 1;
+  
+}
+
+.contactLeft {
+  display: flex;
+  //align-items: center;
+  flex-direction: column;
+}
+
+.accordionElement { 
+    border-bottom: 1px solid $gray;
+    padding: 0 15px;
+}
+
+.accordionTitle {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    h4 {
+        margin-top: 15px;
+    }
+}
+
+.accordionElement:first-child {
+    border-top: 1px solid $gray;
+}
+
+.accordionContent {
+    display: none;
+    ul {
+        margin-top: 10px;
+    }
+}
+
+.elementOpen {
+    display: block;
+}
+
+.contactRight {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+
+  label {
+    display: flex;
+    flex-direction: column;
+  }
+
+  input, textarea, button {
+    appearance: none;
+    border: 1px solid $gray;
+    padding: 10px 10px;
+    font-size: 25px;
+    margin-bottom: 20px;
+    background-color: $bg-primary-light;
+    &.error {
+      border-color: rgb(200, 35, 35);
+    }
+    &:focus {
+      border-color: $black;
+      outline: none;
+    }
+  }
+
+  textarea {
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  }
+  button {
+    appearance: none;
+    border: 1px solid $green;
+    background-color: $green;
+    color: white;
+    font-size: 20px;
+    padding: 10px 10px;
+    margin-top: 20px;
+    margin-bottom: 0;
+    width: 100%;
+    cursor: pointer;
+    &:hover {
+        background-color: $green-light;
+    }
+    &:active {
+        background-color: $green-light;
+    }
+  }
+}
+
+
+.success {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  padding: 5px;
+  border: 1px solid green;
+  color: green;
+  background-color: rgb(208, 255, 220);
+}
+
+
+.socialLogo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  color: $primary2;
+  cursor: pointer;
+}
+.socialLogo svg {
+  margin-right: 20px;
+  fill: $primary2;
+}
+
+.socialLogo:hover {
+  color: $primary;
+  svg {
+    fill: $primary;
+  }
+}
+
+@media screen and (min-width: 1008px) {
+  .contactWrapper {
+    flex-direction: row;
+    margin-bottom: 20px;;
+  }
+  .verticalSplit {
+    margin: 0;
+  }
+  .contactLeft, .contactRight {
+    width: 50%;
+    padding: 20px;
+  }
+  .contactRight {
+    padding: 20px;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .container {
+    width: 640px;
+  }
+}
+@media screen and (min-width: 1008px) {
+  .container {
+    width: 1000px;
+    padding: 20px;
+  }
+}

@@ -12,6 +12,7 @@ const nextConfig = withPWA({
     prependData: `@import "@/styles/variables.scss";`,
   },
   images: {
+    domains: ["localhost"],
     remotePatterns: [
       {
         protocol: 'https',

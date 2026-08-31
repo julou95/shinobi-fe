@@ -84,6 +84,9 @@ export const Header = ({ standalone = false }) => {
             <div className={styles.naviItem} onClick={() => goMobile('/about')}>
               About
             </div>
+            <div className={styles.naviItem} onClick={() => goMobile('/contact')}>
+              Contact
+            </div>
           </div>
         </div>
       </div>

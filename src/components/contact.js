@@ -1,56 +1,12 @@
-import { useRef, useState } from 'react'
+import { useRouter } from 'next/router'
 import styles from '@/styles/Contact.module.scss'
-import { sendEmail } from 'src/api/strapi'
 import Icons from './icons'
 
 export default function Contact() {
-  const [showSuccess, setShowSuccess] = useState(false)
-  const nameRef = useRef()
-  const phoneRef = useRef()
-  const betreffRef = useRef()
-  const textRef = useRef()
+  const router = useRouter()
 
-  const sendMail = () => {
-    const data = {
-      name: nameRef.current.value,
-      phone: phoneRef.current.value,
-      betreff: betreffRef.current.value,
-      text: textRef.current.value,
-    }
-
-    const required = [
-      nameRef,
-      phoneRef,
-      betreffRef,
-      textRef,
-    ]
-
-    if (required.every(val => !!val.current.value)) {
-      required.forEach(ref => {
-        ref.current.classList.remove(styles.error)
-      })
-      sendEmail(data).then((res) => {
-        if (res?.status === 200) {
-            setShowSuccess(true)
-            reset()
-        }
-      })
-    } else {
-      required.forEach(ref => {
-        if (!ref.current.value) {
-          ref.current.classList.add(styles.error)
-        } else {
-          ref.current.classList.remove(styles.error)
-        }
-      });
-    }
-  }
-
-  const reset = () => {
-    nameRef.current.value = ''
-    phoneRef.current.value = ''
-    betreffRef.current.value = ''
-    textRef.current.value = ''
+  const goToContact = () => {
+    router.push('/contact')
   }
 
   return (
@@ -80,32 +36,11 @@ export default function Contact() {
         </div>
         <div className={styles.verticalSplit} uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%;"></div>
         <div className={styles.contactRight} uk-parallax="opacity: 0,1; y: 50,0; end: 85vh + 50%;">
-          <label>
-            Name *
-            <input type="text" ref={nameRef} />
-          </label>
-          <label>
-            Telefon *
-            <input type="tel" ref={phoneRef} />
-          </label>
-          <label>
-            Betreff *
-            <input type="text" ref={betreffRef} />
-          </label>
-          <label>
-            Nachricht *
-            <textarea ref={textRef}></textarea>
-          </label>
-          <button onClick={sendMail}>Senden</button>
-            {
-              showSuccess &&
-                <div className={styles.success} uk-alert>
-                  <div>
-                    Deine Anfrage wurde erfolgreich abgeschickt. Wir melden uns bei dir!
-                  </div>
-                  <Icons name="close" size="35" clickAction={() => setShowSuccess(false)}/>
-                </div>
-            }
+          <h3><span>Noch Fragen?</span></h3>
+          <div>
+            Für Terminanfragen oder sonstige Fragen stehen wir dir gerne zur Verfügung.
+            <button className={styles.contactButton} onClick={goToContact}>Zum Kontaktformular</button>
+          </div>
         </div>
       </div>
     </>

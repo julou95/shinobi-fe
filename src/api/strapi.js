@@ -7,8 +7,8 @@ const headers = {
   'Content-Type': 'application/json',
 }
 
-export const fetchContent = (path) => {
-  return axios.get(`${strapiUrl()}/api/${path}?populate=*`, { headers })
+export const fetchContent = (path, sort = '') => {
+  return axios.get(`${strapiUrl()}/api/${path}?populate=*${sort}`, { headers })
     .then(res => {
       return res.data.data
     })
