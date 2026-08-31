@@ -61,7 +61,7 @@ export default function Artist({ data, index, standalone = false }) {
         </div>
         <div className={styles.descriptionSmall} onClick={goTo}>
           <Image
-            src={`https://nameless-plains-58678-57bc37344216.herokuapp.com${data?.profilePic[0]?.formats?.medium?.url || data?.profilePic[0]?.url || ''}`}
+            src={urlBuilder(data?.profilePic[0]?.formats?.medium?.url || data?.profilePic[0]?.url || '')}
             width={400}
             height={200}
             alt={data.name}

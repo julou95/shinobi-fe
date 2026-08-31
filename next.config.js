@@ -16,7 +16,7 @@ const nextConfig = withPWA({
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'renowned-hope-a2af077664.media.strapiapp.com',
+        hostname: 'https://nameless-plains-58678-57bc37344216.herokuapp.com/',
         port: '',
         pathname: '/**',
       },
