@@ -8,7 +8,7 @@ const headers = {
 }
 
 export const fetchContent = (path, sort = '') => {
-  return axios.get(`${strapiUrl()}/api/${path}?populate=*${sort}`, { headers })
+  return axios.get(`${strapiUrl()}api/${path}?populate=*${sort}`, { headers })
     .then(res => {
       return res.data.data
     })
