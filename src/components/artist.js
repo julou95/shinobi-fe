@@ -61,7 +61,7 @@ export default function Artist({ data, index, standalone = false }) {
         </div>
         <div className={styles.descriptionSmall} onClick={goTo}>
           <Image
-            src={urlBuilder(data?.profilePic[0]?.formats?.medium?.url || data?.profilePic[0]?.url || '')}
+            src={data?.profilePic[0]?.formats?.medium?.url || data?.profilePic[0]?.url || ''}
             width={400}
             height={200}
             alt={data.name}
