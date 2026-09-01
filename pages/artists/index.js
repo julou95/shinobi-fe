@@ -4,7 +4,6 @@ import Head from 'next/head'
 import Header from '@/components/header'
 import styles from '@/styles/Artist.module.scss'
 import { fetchContent } from '@/api/strapi'
-import { markdownDesc } from '@/constants/helpers'
 
 export const Artists = ({ artists = {} }) => {
   const Artists = dynamic(() => import('@/components/artists'), {

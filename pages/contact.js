@@ -158,7 +158,7 @@ export const Contact = ({}) => {
                   <div>
                     Deine Anfrage wurde erfolgreich abgeschickt. Wir melden uns bei dir!
                   </div>
-                  <Icons name="close" size="35" clickAction={() => setShowSuccess(false)}/>
+                  <Icons name="close" size="25" clickAction={() => setShowSuccess(false)}/>
                 </div>
             }
         </div>

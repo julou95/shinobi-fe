@@ -12,7 +12,7 @@ export default function Gallery({ data }) {
           {images.map((image, index) => (
             <li key={index}>
               <img 
-                src={image?.attributes?.formats?.large?.url || image?.attributes?.url || ''}
+                src={`${strapiUrl()}${image?.attributes?.formats?.large?.url || image?.attributes?.url || ''}`}
                 alt=""
                 uk-cover="true"
               />

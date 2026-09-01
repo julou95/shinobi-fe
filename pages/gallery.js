@@ -4,6 +4,7 @@ import Header from '@/components/header'
 import styles from '@/styles/Gallery.module.scss'
 import { fetchContent } from '@/api/strapi'
 import { useSwiper, Swiper, SwiperSlide } from 'swiper/react'
+import { strapiUrl } from '@/api/strapi'
 
 // Import Swiper styles
 import 'swiper/css';
@@ -33,6 +34,7 @@ export const Gallery = ({ gallery }) => {
         swiper.slideTo(activeIndex);
     }
 
+    console.log('images', gallery.images)
   return (
     <>
       <Head>
@@ -46,10 +48,10 @@ export const Gallery = ({ gallery }) => {
         <div className={styles.galleryWrapper}>
             {
                 gallery.images?.map((image, index) =>
-                    <div className={styles.imageWrapper} key={image.formats.medium.name}>
+                    <div className={styles.imageWrapper} key={image?.formats?.medium?.name || image?.url || ''}>
                         <div
-                            style={{ backgroundImage: `url(${image.formats.medium.url})` }}
-                            alt={image.formats.medium.name}
+                            style={{ backgroundImage: `url(${strapiUrl()}${image?.formats?.medium?.url || image?.url || ''})` }}
+                            alt={image?.formats?.medium?.url || image?.url || ''}
                             className={styles.image}
                             onClick={() => openGallery(index)}
                         >
@@ -78,8 +80,8 @@ export const Gallery = ({ gallery }) => {
                             onSwiper={swiperLoad}
                         >
                             {gallery.images?.map(image => (
-                                <SwiperSlide className={styles.slide} key={image.formats.large.name}>
-                                    <img src={`${image.formats.large.url}`} />
+                                <SwiperSlide className={styles.slide} key={image.formats?.large?.url || image.url || ''}>
+                                    <img src={`${strapiUrl()}${image.formats?.large?.url || image.url || ''}`} />
                                 </SwiperSlide>
                             ))}
                         </Swiper>

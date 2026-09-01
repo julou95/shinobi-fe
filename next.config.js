@@ -12,11 +12,11 @@ const nextConfig = withPWA({
     prependData: `@import "@/styles/variables.scss";`,
   },
   images: {
-    domains: ["localhost"],
+    domains: ["localhost", 'nameless-plains-58678-57bc37344216.herokuapp.com'],
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'https://nameless-plains-58678-57bc37344216.herokuapp.com/',
+        hostname: 'https://nameless-plains-58678-57bc37344216.herokuapp.com',
         port: '',
         pathname: '/**',
       },

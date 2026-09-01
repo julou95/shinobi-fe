@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Icons from '@/components/icons'
 import styles from '@/styles/Artist.module.scss'
 import Markdown from 'react-markdown'
+import { strapiUrl } from '@/api/strapi'
 
 const isEven = (nmbr) => nmbr % 2 === 0
 
@@ -25,7 +26,7 @@ export default function Artist({ data, index, standalone = false }) {
       <div className={styles.profilePic}>
         <Image
           className={styles.profilePicLarge}
-          src={`${data?.profilePic[0]?.url || ''}`}
+          src={`${strapiUrl()}${data?.profilePic[0]?.url || ''}`}
           width={400}
           height={200}
           alt={data.name}
@@ -61,7 +62,7 @@ export default function Artist({ data, index, standalone = false }) {
         </div>
         <div className={styles.descriptionSmall} onClick={goTo}>
           <Image
-            src={data?.profilePic[0]?.formats?.medium?.url || data?.profilePic[0]?.url || ''}
+            src={`${strapiUrl()}${data?.profilePic[0]?.formats?.medium?.url || data?.profilePic[0]?.url || ''}`}
             width={400}
             height={200}
             alt={data.name}

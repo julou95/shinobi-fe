@@ -28,7 +28,7 @@ export default async function handler(req, res) {
 
     const mailOptions = {
         from: process.env.MY_EMAIL,
-        to: process.env.MY_EMAIL,
+        to: 'louis.jungo@gmail.com',
         // cc: email, (uncomment this line if you want to send a copy to the sender)
         subject: `Message from ${name} (${phone})`,
         text: text,
