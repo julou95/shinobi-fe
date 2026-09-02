@@ -20,7 +20,7 @@ export const Artist = ({ artist, images }) => {
       <main className={styles.container}>
         <h1><span>{artist.name}</span></h1>
         <div className={styles.content}>
-          <img className={styles.artistPic} src={`${strapiUrl()}${data?.profilePic[0]?.formats?.medium?.url || data?.profilePic[0]?.url || ''}`} />
+          <img className={styles.artistPic} src={`${strapiUrl()}${artist?.profilePic[0]?.formats?.medium?.url || artist?.profilePic[0]?.url || ''}`} />
           <p>
             <Markdown>
               {artist.longDescription}
